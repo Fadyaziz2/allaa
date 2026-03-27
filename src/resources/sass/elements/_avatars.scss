@@ -1,0 +1,117 @@
+.avatar {
+  border-radius: $default-radius;
+  border: 2px solid var(--border-color);
+
+  &.no-image {
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: $muted-color;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--base-color);
+
+    @for $i from 40 through 60 {
+      &.size-#{$i} {
+        font-size: #{$i - 27}px;
+      }
+    }
+
+    @for $i from 61 through 80 {
+      &.size-#{$i} {
+        font-size: #{$i - 37}px;
+      }
+    }
+
+    @for $i from 81 through 100 {
+      &.size-#{$i} {
+        font-size: #{$i - 47}px;
+      }
+    }
+
+    @for $i from 101 through 120 {
+      &.size-#{$i} {
+        font-size: #{$i - 52}px;
+      }
+    }
+
+    @for $i from 121 through 140 {
+      &.size-#{$i} {
+        font-size: #{$i - 60}px;
+      }
+    }
+  }
+
+  &.avatar-circle {
+    border-radius: 50%;
+  }
+}
+
+.status-avatar {
+  position: relative;
+
+  .status {
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    bottom: -2px;
+    left: 10%;
+    border-radius: 50%;
+  }
+
+  .avatar {
+    &.avatar-circle {
+      + .status {
+        bottom: 7%;
+      }
+    }
+  }
+
+  @for $i from 40 through 200 {
+    .size-#{$i} {
+      &.avatar {
+        + .status {
+          width: 15%;
+          height: 15%;
+        }
+      }
+    }
+  }
+}
+
+.avatar-group {
+  display: flex;
+
+  .avatar {
+    margin-left: -15px;
+    transition: all 0.25s ease-in-out;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover {
+      z-index: 1;
+      transform: translateY(-2px);
+    }
+  }
+
+  .status-avatar {
+    margin-left: -15px;
+    transition: all 0.25s ease-in-out;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    .avatar {
+      margin: 0;
+      transform: none;
+    }
+
+    &:hover {
+      z-index: 1;
+      transform: translateY(-2px);
+    }
+  }
+}

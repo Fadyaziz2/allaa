@@ -1,0 +1,112 @@
+.container-scroller {
+    background-color: var(--base-color);
+    scroll-behavior: smooth;
+    .page-body-wrapper {
+        display: flex;
+        flex-direction: row;
+        padding-top: $navbar-height;
+        .main-panel {
+            display: flex;
+            flex-direction: column;
+            margin-left: $sidebar-width-lg;
+            width: calc(100% - #{$sidebar-width-lg});
+            transition: width $action-transition-duration
+                    $action-transition-timing-function,
+                margin $action-transition-duration
+                    $action-transition-timing-function;
+            .content-wrapper {
+                width: 100%;
+                flex-grow: 1;
+                background: var(--base-color);
+                @media (max-width: 960px) {
+                    padding: 5px;
+                }
+                @media (max-width: 767px) {
+                    padding: 0px 15px;
+                }
+            }
+
+            @media (min-width: 992px) {
+                .content-wrapper {
+                    padding-top: 0;
+                }
+            }
+
+            @media (max-width: 991px) {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+// Wrapper for POS page
+.pos-page {
+    .container-scroller {
+        .page-body-wrapper {
+            .main-panel {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+// when rtl mode on
+
+.rtl {
+    direction: rtl;
+
+    .navbar-top {
+        margin-right: $sidebar-width-lg;
+        margin-left: unset !important;
+
+        @media (max-width: 991px) {
+            margin-right: 0 !important;
+        }
+
+        .sidebar-toggle-button {
+            right: -11px;
+            left: unset !important;
+        }
+    }
+    .container-scroller {
+        .page-body-wrapper {
+            .main-panel {
+                margin-right: $sidebar-width-lg;
+                margin-left: unset !important;
+                width: calc(100% - $sidebar-width-lg) !important;
+                &.adjust {
+                    margin-right: 96px;
+                    width: 100% !important;
+                }
+                @media (max-width: 991px) {
+                    margin-right: 0;
+                    margin-left: 0;
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+
+    &[sidebarstatus="collapsed"] {
+        .container-scroller {
+            .page-body-wrapper {
+                .main-panel {
+                    margin-left: unset !important;
+                    margin-right: 96px !important;
+                    width: 100% !important;
+                    &.adjust {
+                        margin-right: 96px;
+                        width: 100% !important;
+                    }
+                    @media (max-width: 991px) {
+                        margin-left: 0 !important;
+                        margin-right: 0 !important;
+                        width: 100% !important;
+                    }
+                }
+            }
+        }
+    }
+}

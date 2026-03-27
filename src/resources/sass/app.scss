@@ -1,0 +1,162 @@
+// Import Custom Variables
+@import "variables";
+
+// Bootstrap
+@import "bootstrap/scss/bootstrap";
+@import "theme-colors";
+
+// Template mixins
+@import "./mixins/animation";
+
+// Layouts
+@import "layouts/navbar";
+@import "layouts/sidebar";
+@import "layouts/layouts";
+
+// Elements
+@import "elements/avatars";
+@import "elements/badges";
+@import "elements/buttons";
+@import "elements/cards";
+@import "elements/chart";
+@import "elements/dropdown";
+@import "elements/loaders";
+@import "elements/misc";
+@import "elements/modal";
+@import "elements/offcanvas";
+@import "elements/pagination";
+@import "elements/tables";
+@import "elements/vertical-wrapper";
+@import "elements/multisteps";
+@import "elements/tabs";
+@import "elements/kanban";
+
+// Forms
+@import "forms/general-inputs";
+@import "forms/selects";
+@import "forms/checkbox_radios";
+
+// Utilities
+@import "utilities/borders";
+@import "utilities/colors";
+@import "utilities/helpers";
+@import "utilities/positioning";
+@import "utilities/sizes";
+@import "utilities/typography";
+
+// Pages
+@import "pages/pos";
+@import "pages/profile";
+@import "pages/settings";
+@import "pages/auth";
+@import "pages/installation";
+@import "pages/role";
+@import "pages/notification-variables";
+@import "pages/customer-details";
+
+// fonts
+@import "fonts";
+
+.ql-toolbar {
+    border-top-left-radius: var(--round-default) !important;
+    border-top-right-radius: var(--round-default) !important;
+}
+.ql-container {
+    border-bottom-left-radius: var(--round-default) !important;
+    border-bottom-right-radius: var(--round-default) !important;
+
+    .ql-editor {
+        background-color: var(--form-control-bg) !important;
+        min-height: 100px !important;
+    }
+}
+
+.rtl {
+    .end-0 {
+        left: 0 !important;
+        right: unset !important;
+    }
+}
+.px {
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        $next: breakpoint-next($breakpoint, $grid-breakpoints);
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+        @for $i from 1 through 10 {
+            &#{$infix}-#{$i}rem {
+                @include media-breakpoint-up($breakpoint) {
+                    padding-left: #{$i}rem !important;
+                    padding-right: #{$i}rem !important;
+                }
+            }
+        }
+        &#{$infix}-20px {
+            @include media-breakpoint-up($breakpoint) {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+        }
+    }
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute;
+}
+.rounded-default {
+    border-radius: var(--round-default) !important;
+}
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow {
+    border: 1px solid var(--border-color) !important ;
+    overflow: hidden;
+}
+.bg-base-color {
+    background-color: var(--base-color) !important;
+}
+body {
+    --bs-heading-color: var(--font-color);
+
+    .mb-21px {
+        margin-bottom: 21px;
+    }
+}
+
+.bg-white {
+    background-color: var(--card-color) !important;
+}
+[theme="dark"] {
+    .text-muted {
+        color: rgb(197 197 197 / 75%) !important;
+    }
+}
+.zi-1 {
+    z-index: 1;
+}
+
+.cursor-move {
+    cursor: move;
+}
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.zi-1080 {
+    z-index: 1080;
+}
+.zi-0 {
+    z-index: 0;
+}
+.outline-none {
+    outline: none !important;
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+        outline: none !important;
+    }
+}
+p {
+    color: var(--font-color);
+}
+.no-shadow {
+    box-shadow: none !important;
+}

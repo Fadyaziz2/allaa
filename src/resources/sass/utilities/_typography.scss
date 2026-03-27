@@ -1,0 +1,28 @@
+$weights: (
+        100, 200, 300, 400, 500, 600, 700, 800, 900
+);
+
+@each $weight in $weights {
+  .fw-#{$weight} {
+    font-weight: #{$weight};
+  }
+}
+
+.line-height-15 {
+  line-height: 15px;
+}
+
+a {
+  text-decoration: none !important;
+  &.text-default {
+    color: var(--font-color);
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}
+
+.hover-none {
+  background-color: transparent !important;
+}

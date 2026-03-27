@@ -1,0 +1,1 @@
+import{_ as e,o,c as r}from"./app-583c7dce.js";const t={name:"ButtonLoader"},s={class:"spinner-border spinner-border-sm",role:"status","aria-hidden":"true"};function n(a,c,d,p,_,i){return o(),r("span",s)}const f=e(t,[["render",n]]);export{f as default};

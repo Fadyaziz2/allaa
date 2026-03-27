@@ -1,0 +1,21 @@
+
+.template-variables {
+    border-radius: 10px;
+    background-color: var(--template-variables);
+    padding: 25px;
+
+    .title {
+        color: var(--font-color);
+        letter-spacing: 0.4px;
+        font-weight: bold;
+    }
+
+    .variables {
+        display: flex;
+        flex-direction: column;
+
+        span {
+            color: var(--font-color);
+        }
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "arial unicode ms": {
+        "normal": "arial_unicode_ms_normal_8ef086c310f0f0c87ba99691369d27c5"
+    },
+    "roboto mono": {
+        "100_italic": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_100_italic_66c4a38fe7000499dd04a6e1db1507c1",
+        "200_italic": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_200_italic_088d9d39312a61a55844956490376182",
+        "300_italic": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_300_italic_815200fe548ca4cf8f011597e60ee57a",
+        "italic": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_italic_b6fd919e1d9eb4d22288e472bab41f21",
+        "500_italic": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_500_italic_3cc86e5ddf9ce5318079abab9b68ad02",
+        "600_italic": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_600_italic_d551abaa52fc4b039d86e7a7271c28f7",
+        "bold_italic": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_bold_italic_499ebfe1b9abbaea98545cb78eab1cc6",
+        "100": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_100_8780b4866631d965dc0a48026448b939",
+        "200": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_200_1f1f2cb2631a83988264701557e1e81e",
+        "300": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_300_de50ff606a3fb2ecb2a50ea13b668abf",
+        "normal": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_normal_195dcb6663f2774230f8b6427a09930b",
+        "500": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_500_8beb6452ff7da3a700dc60c0b059c8d9",
+        "600": "roboto_mono_600_1371bbaac582b23cbadbdce94a487c6e",
+        "bold": "\/Users\/ridomrayhan\/Documents\/Billing-API\/storage\/fonts\/roboto_mono_bold_246068f04ed1a1582d252bc509720b90"
+    }
+}

@@ -1,0 +1,78 @@
+.chart-legend {
+  font-weight: 600;
+
+  &:before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-right: 5px;
+    border-radius: 2px;
+    transform: rotate(45deg);
+  }
+
+  &.boxed {
+    padding: 6px 12px;
+    border-radius: var(--round-default);
+  }
+
+  &.primary {
+    &:before {
+      background-color: var(--primary);
+    }
+
+    &.boxed {
+      background-color: rgba(var(--primary), 0.085);
+    }
+  }
+
+  &.warning {
+    &:before {
+      background-color: var(--warning);
+    }
+
+    &.boxed {
+      background-color: rgba($warning, 0.085);
+    }
+  }
+
+  &.success {
+    &:before {
+      background-color: var(--success);
+    }
+
+    &.boxed {
+      background-color: rgba($success, 0.085);
+    }
+  }
+
+  &.info {
+    &:before {
+      background-color: var(--info);
+    }
+
+    &.boxed {
+      background-color: rgba($info, 0.085);
+    }
+  }
+
+  &.indigo {
+    &:before {
+      background-color: var(--indigo);
+    }
+
+    &.boxed {
+      background-color: rgba($indigo, 0.085);
+    }
+  }
+
+  &.danger {
+    &:before {
+      background-color: var(--danger);
+    }
+
+    &.boxed {
+      background-color: rgba($danger, 0.085);
+    }
+  }
+}

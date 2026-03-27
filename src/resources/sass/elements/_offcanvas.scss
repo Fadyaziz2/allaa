@@ -1,0 +1,34 @@
+.offcanvas {
+  background-color: var(--card-color);
+
+  .offcanvas-header {
+    padding: $default-padding-margin;
+    border-bottom: 1px solid var(--border-color);
+
+    .btn-close {
+      width: 30px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      color: var(--font-color);
+      border-radius: 50%;
+      background-image: none;
+
+      &:hover {
+        background-color: var(--base-color);
+      }
+    }
+  }
+
+  .offcanvas-body {
+    padding: $default-padding-margin;
+  }
+
+  @media (max-width: 575px) {
+    &.offcanvas-end {
+      width: 100% !important;
+    }
+  }
+}

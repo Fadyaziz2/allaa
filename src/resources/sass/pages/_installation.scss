@@ -1,0 +1,72 @@
+.installer-container {
+    .installation_notice {
+        background-color: rgba(218, 227, 239, 0.8); /* Increased opacity for better visibility */
+        //border-radius: 10px; /* Simplified border-radius */
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+
+        .installation_notice_title {
+            font-weight: 600; /* Increased font-weight for title */
+            font-size: 18px;
+            line-height: 27px;
+        }
+    }
+
+    .installation_status_table {
+        width: 100%;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+
+        thead {
+            tr {
+                background: #D1ECF1;
+                //border-radius: 5px;
+
+                th {
+                    font-weight: 600; /* Increased font-weight for table headings */
+                    padding: 10px 20px;
+                    text-align: left; /* Aligning left for better readability */
+
+                    &:first-child {
+                        border-top-left-radius: 5px;
+                        border-bottom-left-radius: 5px;
+                        width: 25%;
+                    }
+
+                    &:last-child {
+                        border-top-right-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    padding: 1px 1px;
+                    text-align: left; /* Aligning left for better readability */
+                }
+            }
+        }
+    }
+
+    .multi-step-btn {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 27px;
+        width: 7rem;
+        background-color: #007bff; /* Changing background color */
+        color: #fff; /* Changing text color */
+        border: none; /* Removing border */
+        border-radius: 5px; /* Adding border-radius */
+        padding: 5px; /* Adding padding */
+        cursor: pointer; /* Changing cursor to pointer */
+
+        &:hover {
+            background-color: #0056b3; /* Darker color on hover */
+        }
+    }
+}

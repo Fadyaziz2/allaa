@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "213354955498",
+    "project_id": "zabi-test-8d2aa",
+    "storage_bucket": "zabi-test-8d2aa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213354955498:android:cfda647e1f8d3f726f0d93",
+        "android_client_info": {
+          "package_name": "com.theme29.invoicex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKGWHuIIBrpkhhYbUHQjag28YpbB4TbuA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

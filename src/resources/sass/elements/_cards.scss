@@ -1,0 +1,21 @@
+.card {
+  border: 0;
+  border-radius: $default-radius;
+  background-color: var(--card-color);
+  box-shadow: var(--box-shadow);
+
+  .card-header {
+    padding: $default-padding-margin;
+    border: none;
+    background-color: transparent;
+
+    .title {
+      margin-bottom: 0;
+      font-weight: 600;
+    }
+  }
+
+  .card-body {
+    padding: $default-padding-margin;
+  }
+}

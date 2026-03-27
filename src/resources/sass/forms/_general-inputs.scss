@@ -1,0 +1,230 @@
+label {
+  color: var(--font-color);
+  font-size: $default-font-size;
+}
+.form-control::placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+.input-group {
+  border-radius: var(--round-default) !important;
+  .input-group-text {
+    border-top-left-radius: var(--round-default);
+    border-bottom-left-radius: var(--round-default);
+    color: var(--font-color);
+    background-color: var(--form-control-bg);
+    border: var(--bs-border-width) solid var(--bs-border-color);
+  }
+}
+.rtl {
+  .input-group {
+    .input-group-text {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: var(--round-default);
+      border-bottom-right-radius: var(--round-default);
+    }
+  }
+}
+.form-control {
+  padding: 10px 15px;
+  color: var(--font-color);
+  font-size: $default-font-size;
+  border-radius: var(--round-default);
+  border-color: var(--border-color);
+  background-color: var(--form-control-bg);
+  transition: all var(--transition-duration) ease-in-out;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    color: var(--font-color);
+    border-color: var(--primary);
+    background-color: var(--form-control-bg);
+  }
+
+  &:hover {
+    border-color: var(--primary);
+  }
+
+  &[type="color"] {
+    height: 40px;
+  }
+
+  &.form-control-sm {
+    padding: 6px 15px;
+  }
+}
+
+.search-input {
+  position: relative;
+
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    color: var(--font-color);
+    transform: translateY(-50%);
+  }
+
+  input {
+    padding: 9px 15px 9px 35px;
+
+    &.form-control-sm {
+      padding: 0.72rem 15px 0.72rem 2.7rem;
+      width: 320px;
+    }
+  }
+}
+.vue-dropzone {
+  border-radius: var(--round-default);
+  border: 2px dashed var(--border-color) !important;
+  background-color: var(--form-control-bg) !important;
+
+  &:hover {
+    border-color: var(--primary) !important;
+  }
+}
+
+[theme="dark"] {
+
+
+  .dp__action_row {
+    margin-left: unset;
+    justify-content: space-between;
+    .dp__action_buttons {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .dp__action_button {
+    margin-left: 6px;
+
+    &.dp__action_cancel {
+      border: 0;
+      height: 30px;
+
+      &:hover {
+        background: none !important;
+      }
+    }
+
+    &.dp__action_select {
+      height: 30px;
+    }
+  }
+}
+
+.dp__input {
+  border-radius: var(--round-default) !important;
+  height: 43px;
+  font-size: 14px;
+}
+
+.dp__action_button {
+  height: 30px !important;
+
+  &.dp__action_cancel {
+    &:hover {
+      border: 0;
+      color: #fff;
+    }
+  }
+}
+
+.dp__action_row {
+  margin-left: unset;
+  .dp__action_buttons {
+    margin-left: auto;
+  }
+}
+
+.rtl {
+  .dp__action_row {
+    margin-left: unset;
+    justify-content: space-between;
+    .dp__action_buttons {
+      margin: 0;
+    }
+  }
+}
+
+input {
+  &[type="number"] {
+    &:disabled {
+      cursor: not-allowed;
+      background-color: var(--form-control-bg);
+      opacity: 0.5;
+
+      &:hover {
+        border-color: var(--border-color);
+      }
+    }
+  }
+
+  &[type="text"] {
+    &:disabled {
+      cursor: not-allowed;
+      background-color: var(--form-control-bg);
+      opacity: 0.5;
+      &:hover {
+        border-color: var(--border-color);
+      }
+    }
+  }
+
+  &[type="date"] {
+    &:disabled {
+      cursor: not-allowed;
+      background-color: var(--form-control-bg);
+      opacity: 0.5;
+      &:hover {
+        border-color: var(--border-color);
+      }
+    }
+  }
+
+  &.form-control {
+    &:disabled {
+      cursor: not-allowed;
+      background-color: var(--form-control-bg);
+      opacity: 0.5;
+      &:hover {
+        border-color: var(--border-color);
+      }
+    }
+  }
+}
+
+//Date picker
+.dp-variables {
+  --dp-background-color: var(--card-color) !important;
+  --dp-border-color: var(--border-color) !important;
+  --dp-menu-border-color: var(--border-color) !important;
+  --dp-border-color-hover: var(--primary) !important;
+  --dp-text-color: var(--font-color) !important;
+  --dp-hover-color: var(--base-color) !important;
+  --dp-hover-text-color: var(--primary) !important;
+  --dp-primary-color: var(--primary) !important;
+  --dp-disabled-color: var(--card-color) !important;
+  --dp-secondary-color: var(--muted-color) !important;
+}
+.dp__input {
+  @extend .dp-variables;
+  --dp-background-color: var(--form-control-bg) !important;
+}
+.dp__theme_light {
+  @extend .dp-variables;
+}
+.dp__overlay_cell_disabled{
+  color: var(--muted-color) !important;
+}
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow {
+  overflow: visible !important;
+}
+.ql-toolbar,
+.ql-container {
+  overflow: visible !important;
+}

@@ -1,0 +1,76 @@
+.pagination-nav {
+    .pagination {
+        margin: 0;
+
+        .page-item {
+            margin-inline: 5px;
+            .page-link {
+                z-index: 1;
+                width: 34px;
+                height: 34px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0;
+                color: var(--font-color);
+                font-size: 13px;
+                font-weight: 600;
+                border: none;
+                background-color: transparent;
+                border: 1px solid lightgrey;
+                border-radius: 3px;
+                &:before {
+                    z-index: -1;
+                    width: 26px;
+                    height: 26px;
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: inline-block;
+                    border-radius: 3px;
+                    transform: rotate(0deg);
+                }
+
+                &:focus {
+                    box-shadow: none;
+                }
+
+                &:hover:not(&.active) {
+                    color: var(--primary);
+                    background: var(--card-color);
+                }
+
+                &.active {
+                    color: var(--bs-light);
+                    background: var(--primary);
+                    &:before {
+                        border: 2px solid var(--primary);
+                        color: var(--primary) !important;
+                    }
+                }
+            }
+
+            &:first-child,
+            &:last-child {
+                .page-link {
+                    margin: 0;
+
+                    &:before {
+                        border-color: transparent;
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.rtl {
+    .bi-chevron-right {
+        transform: rotate(180deg) !important;
+    }
+    .bi-chevron-left {
+        transform: rotate(180deg) !important;
+    }
+}

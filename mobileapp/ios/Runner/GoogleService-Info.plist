@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCbNfoaKScIUtasfY22mys9BRtaCDriQ7I</string>
+	<key>GCM_SENDER_ID</key>
+	<string>213354955498</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.theme29.invoicex</string>
+	<key>PROJECT_ID</key>
+	<string>zabi-test-8d2aa</string>
+	<key>STORAGE_BUCKET</key>
+	<string>zabi-test-8d2aa.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:213354955498:ios:4e1652524a7ea4be6f0d93</string>
+</dict>
+</plist>

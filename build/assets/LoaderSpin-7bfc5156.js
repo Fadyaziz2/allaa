@@ -1,0 +1,1 @@
+import{_ as n,o as s,c as t,a as o}from"./app-583c7dce.js";const a={name:"LoaderSpin"},r={class:"d-flex flex-column justify-content-center align-items-center"};function c(i,e,l,d,p,f){return s(),t("div",r,e[0]||(e[0]=[o("div",{class:"spinner"},null,-1)]))}const m=n(a,[["render",c]]);export{m as default};

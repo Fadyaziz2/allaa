@@ -1,0 +1,28 @@
+@import '../variables';
+.font-color-default {
+  color: var(--font-color);
+}
+
+.bg-base {
+  background-color: var(--base-color);
+}
+
+.bg-card {
+  background-color: var(--card-color);
+}
+
+.primary-rgba-light {
+  background-color: rgba(var(--primary), 0.05);
+}
+
+.warning-rgba-light {
+  background-color: rgba($warning, 0.05);
+}
+
+.info-rgba-light {
+  background-color: rgba($info, 0.05);
+}
+
+.indigo-rgba-light {
+  background-color: rgba($indigo, 0.05);
+}

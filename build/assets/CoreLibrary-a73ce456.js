@@ -1,0 +1,1 @@
+import{Y as e}from"./app-583c7dce.js";const u=()=>({isFunction:n=>e.isFunction(n),getAppUrl:n=>e.getAppUrl(n),isUndefined:n=>e.isUndefined(n),getQueryStringValue:n=>e.getQueryStringValue(n)});export{u};

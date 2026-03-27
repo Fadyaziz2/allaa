@@ -1,0 +1,46 @@
+@import "../variables";
+.hover-light-bg {
+    &:hover {
+        background-color: var(--base-color);
+    }
+}
+
+.shadow-default {
+    box-shadow: var(--box-shadow);
+}
+
+.border-transparent {
+    border-color: transparent;
+}
+
+.spinner-primary {
+    border: 0.25em solid var(--primary);
+    border-right-color: transparent;
+}
+
+.no-focus-effect {
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+
+.custom-filter {
+    padding: 3px 0 3px 3px;
+    width: 130px !important;
+    border-radius: 5px;
+    border-color: $border-color;
+    color: var(--font-color);
+    font-size: 13px;
+    cursor: pointer;
+    background-color: var(--card-color);
+    position: relative;
+}
+
+.height-full {
+    height: 100%;
+}
+
+.width-full {
+    width: 100%;
+}

@@ -1,0 +1,71 @@
+  .customer-profile-panel {
+      background-color: var(--card-color);
+      border-radius: var(--round-default);
+      padding: 25px;
+
+      .inner {
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          row-gap: 20px;
+
+          .photo {
+              width: 90px;
+              height: 90px;
+
+              img {
+                  border-radius: 50%;
+                  height: auto;
+                  width: 100%;
+                  object-fit: cover;
+              }
+          }
+
+          .user-info {
+              display: flex;
+              flex-direction: column;
+              word-break: break-word;
+
+              .user-email {
+                  color: var(--menubar-font-color);
+              }
+          }
+      }
+
+      .other-infos {
+          .info {
+              .title {
+                  font-weight: 500;
+                  font-size: 14px;
+              }
+
+              .values {
+                  //   color: #9a9aa8;
+                  color: var(--menubar-font-color);
+                  font-weight: 400;
+              }
+          }
+
+      }
+
+  }
+
+  .report-card {
+      background-color: var(--card-color);
+      padding: 25px;
+
+      .title {
+          font-size: 16px;
+          font-weight: 700;
+
+          color: var(--brand-color);
+      }
+
+      .sub-title {
+          font-size: 14px;
+          text-transform: capitalize;
+          color: var(--font-color);
+      }
+  }

@@ -1,0 +1,25 @@
+.kanban-board {
+  display: flex;
+  overflow-y: hidden;
+
+  .section-box {
+    height: auto;
+    min-width: 350px;
+    width: 350px;
+
+    .section-items {
+      height: 100%;
+      max-height: 65vh;
+      flex-grow: 1;
+    }
+  }
+}
+
+.ghost {
+  opacity: 0.5;
+  background: #c8ebfb;
+}
+
+.h-70vh {
+  height: 60vh;
+}

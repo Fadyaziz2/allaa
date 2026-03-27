@@ -1,0 +1,92 @@
+// Override Bootstrap Variables
+$warning: #ffc107;
+$indigo: #6610f2;
+$brand-color: #00aaf0;
+// $primary: #36a2eb; //Previous
+$primary: #00aaf0;
+$secondary: #637381;
+$success: #34ab84;
+$info: #0dcaf0;
+$danger: #ff4842;
+$light: #f8f9fa;
+$dark: #212529;
+$border-color: #ececec;
+$orange-color: #ff5c35;
+// Override Bootstrap Theme Colors
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "orange": $orange-color,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark,
+    "indigo": $indigo,
+);
+
+// Other Color Variables
+$black: #000;
+$blue: #4466f2;
+$white: #fff;
+// $base-color:      #F1F6FA; //Main color
+$base-color: #f9f9f9;
+$light-color: #f5f8ff;
+$muted-color: #b8b8b8;
+$error-color: #cc3300;
+$danger-color: #f96868;
+$success-color: #46c35f;
+$secondary-color: #9397a0;
+
+// Border Variables
+$default-radius: 6px;
+
+// Fonts
+$default-font-size: 14px;
+$font-type-1: "Nunito", sans-serif;
+
+// Measurement & Property Variables
+$default-padding-margin: 1.5rem;
+$main-content-wrapper-padding: $default-padding-margin;
+
+// Transition Variables
+$default-transition-duration: 0.25s;
+$action-transition-duration: 0.25s;
+$action-transition-timing-function: ease-in-out;
+
+// Misc Variables
+$default-scrollbar-width: 6px;
+
+// Navbar
+$navbar-height: 60px;
+
+// Sidebar
+$sidebar-width-lg: 260px;
+$sidebar-width-icon: 96px;
+$sidebar-scrollbar-width: 6px;
+$icon-only-collapse-width: 190px;
+$sidebar-submenu-font-size: 0.8125rem;
+$sidebar-submenu-item-padding: 0.75rem 1.35rem 0.75rem 1.35rem;
+
+// Sidebar Light
+$sidebar-scrollbar-thumb-color: #566076;
+
+// Sidebar Dark
+$sidebar-dark-bg: #2b303b;
+
+$accordion-header-bg: $base-color;
+$accordion-padding-y: 1.5rem;
+$accordion-padding-x: 1.5rem;
+$accordion-button-bg: $base-color;
+$accordion-button-active-bg: $base-color;
+$accordion-button-active-color: $dark;
+
+$accordion-border-color: $border-color;
+$accordion-focus-border-color: $border-color;
+$accordion-button-focus-box-shadow: none;
+
+$accordion-icon-active-color: $dark;
+
+// scss-docs-start box-shadow-variables
+$box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
