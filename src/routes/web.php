@@ -28,9 +28,8 @@ Route::get('/installation', function () {
 });
 
 Route::get('/login', function () {
-    return view('app');
-})->where('vue', '[\/\w\.-]*')
-    ->name('login')->middleware(['install', 'guest']);
+    return view('login');
+})->name('login')->middleware(['install', 'guest']);
 
 Route::get('symlink', function () {
     $target = storage_path("app/public");
