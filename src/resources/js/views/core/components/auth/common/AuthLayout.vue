@@ -23,7 +23,7 @@ import store from "@store";
 import {urlGenerator} from "@utilities/urlGenerator";
 
 const settingInfo = computed(() => store.getters["setting/setting"])
-const companyBanner = computed(() => settingInfo.value ? settingInfo.value.company_banner : 'assets/images/brand.png')
+const companyBanner = computed(() => settingInfo.value?.company_banner || 'assets/images/brand.png')
 
 const darkMode = ref(false)
 onMounted(() => {
@@ -42,4 +42,3 @@ onMounted(() => {
 })
 
 </script>
-
