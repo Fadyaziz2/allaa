@@ -155,16 +155,8 @@
         </div>
 
         <div class="mt-2 d-flex gap-3 justify-content-center">
-            <router-link
-                v-if="hasNext"
-                to="/environment/setup"
-                class="btn btn-primary btn-sm py-3 px-5 mx-auto text-center installer_btn"
-            >
-                Continue
-            </router-link>
-
             <button
-                v-else
+                v-if="!hasNext"
                 type="button"
                 class="btn btn-primary btn-sm py-3 px-5 mx-auto text-center"
                 @click.prevent="retry">
@@ -180,7 +172,7 @@
 </style>
 
 <script setup>
-import {ref, onMounted, computed} from "vue";
+import {ref, onMounted, computed, watch} from "vue";
 import {urlGenerator} from "@utilities/urlGenerator";
 import router from "@router/index";
 
@@ -231,6 +223,13 @@ const hasNext = computed(() => {
         }
     }
     return false;
+});
+
+
+watch(hasNext, (canProceed) => {
+    if (canProceed) {
+        router.push({name: "environmentSetup"});
+    }
 });
 
 const retry = () => {
