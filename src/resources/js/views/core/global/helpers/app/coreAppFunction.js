@@ -4,7 +4,7 @@ export default class coreAppFunction {
         const metaUrl = document.querySelector('meta[name="app-base-url"]')?.getAttribute('content');
         const url = metaUrl || appUrl || window.location.origin;
 
-        return url.replace(/\/+$/, '');
+        return typeof url === "string" ? url.replace(/\/+$/, '') : window.location.origin;
     }
 
     static getAppUrl(path) {
@@ -25,7 +25,9 @@ export default class coreAppFunction {
     }
 
     static splitNameBySlas(item) {
-
+        if (typeof item !== "string") {
+            return "";
+        }
         if (item.includes("/")) {
 
             let itemArr = item.split("/");
