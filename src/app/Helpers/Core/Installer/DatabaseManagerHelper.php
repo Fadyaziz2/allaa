@@ -62,7 +62,6 @@ class DatabaseManagerHelper
             'TELESCOPE_ENABLED=' . 'false' . "\n\n" .
             'APP_INSTALLED=false' . "\n" .
             'IS_DEMO=false' . "\n" .
-            'PURCHASE_CODE=' . $request->get('purchase_code') . "\n" .
             'DB_CONNECTION=' . $request->database_connection . "\n" .
             'DB_HOST=' . $request->database_hostname . "\n" .
             'DB_PORT=' . $request->database_port . "\n" .
