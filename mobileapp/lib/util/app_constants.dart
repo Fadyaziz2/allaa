@@ -12,11 +12,11 @@ class AppConstants {
   static const String THEME = 'theme';
 
   // BASE URL LINK
-  static const String BASE_URL = 'https://invoicex.theme29.com/api/mobile';
-  static const String DOMAIN_URL = 'https://invoicex.theme29.com';
+  static const String BASE_URL = 'https://islandeg.com/api/mobile';
+  static const String DOMAIN_URL = 'https://islandeg.com';
 
-  // static const String BASE_URL = 'https://invoicex-dev.theme29.com/api/mobile';
-  // static const String DOMAIN_URL = 'https://invoicex-dev.theme29.com';
+  // static const String BASE_URL = 'https://islandeg.com/api/mobile';
+  // static const String DOMAIN_URL = 'https://islandeg.com';
 
   // API END POINT
 
