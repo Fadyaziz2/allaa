@@ -354,5 +354,9 @@
   "add_unit_key": "إضافة وحدة",
   "write_unit_name_here_key": "اكتب اسم الوحدة هنا.",
   "please_enter_the_unit_name_key": "من فضلك أدخل اسم الوحدة",
-  "add_product_category_key": "إضافة تصنيف منتج"
+  "add_product_category_key": "إضافة تصنيف منتج",
+  "sku_key": "SKU",
+  "generate_key": "توليد",
+  "scan_barcode_key": "مسح الباركود",
+  "enter_the_sku_key": "ادخل SKU"
 }

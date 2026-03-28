@@ -1,3 +1,4 @@
+import 'dart:math';
 // ignore_for_file: deprecated_member_use
 
 import 'package:invoicex/controller/expenses_controller.dart';
@@ -14,6 +15,7 @@ import '../../base/custom_app_bar.dart';
 import '../../base/custom_drop_down.dart';
 import '../../base/custom_snackbar.dart';
 import '../../base/custom_text_field.dart';
+import 'widget/sku_scanner_screen.dart';
 
 class AddProductScreen extends StatelessWidget {
   final String isUpdate;
@@ -22,13 +24,21 @@ class AddProductScreen extends StatelessWidget {
   // text controllers
   final _productNameController = TextEditingController();
   final _priceController = TextEditingController();
-  final _codeController = TextEditingController();
+  final _skuController = TextEditingController();
   final _descriptionController = TextEditingController();
 
   final _productNameFocusNode = FocusNode();
   final _priceFocusNode = FocusNode();
-  final _codeFocusNode = FocusNode();
+  final _skuFocusNode = FocusNode();
   final _descriptionFocusNode = FocusNode();
+
+
+  String _generateSku() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    final random = Random();
+    final segment = List.generate(8, (index) => chars[random.nextInt(chars.length)]).join();
+    return 'SKU-$segment';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +56,8 @@ class AddProductScreen extends StatelessWidget {
                     .productDetailsModel!
                     .price
                     .toString();
-                _codeController.text =
-                    Get.find<ProductController>().productDetailsModel!.code ??
+                _skuController.text =
+                    Get.find<ProductController>().productDetailsModel!.sku ??
                         "";
                 _descriptionController.text = Get.find<ProductController>()
                         .productDetailsModel!
@@ -146,7 +156,7 @@ class AddProductScreen extends StatelessWidget {
                                                 isRequired: true,
                                                 controller: _priceController,
                                                 focusNode: _priceFocusNode,
-                                                nextFocus: _codeFocusNode,
+                                                nextFocus: _skuFocusNode,
                                                 inputType: TextInputType.numberWithOptions(decimal: true),
                                                 isOnlyNumber: true,
                                                 inputAction:
@@ -162,14 +172,43 @@ class AddProductScreen extends StatelessWidget {
                                                   .PADDING_SIZE_DEFAULT,
                                             ),
 
-                                            // Code text field
+                                            // SKU text field
                                             Expanded(
                                               child: CustomTextField(
-                                                hintText: 'code_key'.tr,
-                                                header: 'code_key'.tr,
+                                                hintText: 'sku_key'.tr,
+                                                header: 'sku_key'.tr,
+                                                headerRightElement: Row(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: [
+                                                    IconButton(
+                                                      splashRadius: 16,
+                                                      constraints: const BoxConstraints(),
+                                                      icon: const Icon(Icons.qr_code_scanner_rounded, size: 20),
+                                                      onPressed: () async {
+                                                        final result = await Get.to(() => const SkuScannerScreen());
+                                                        if (result != null && result.toString().isNotEmpty) {
+                                                          _skuController.text = result.toString();
+                                                        }
+                                                      },
+                                                    ),
+                                                    const SizedBox(width: 6),
+                                                    InkWell(
+                                                      onTap: () {
+                                                        _skuController.text = _generateSku();
+                                                      },
+                                                      child: Text(
+                                                        'generate_key'.tr,
+                                                        style: poppinsMedium.copyWith(
+                                                          color: Theme.of(context).primaryColor,
+                                                          fontSize: Dimensions.FONT_SIZE_SMALL,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                                 isRequired: true,
-                                                controller: _codeController,
-                                                focusNode: _codeFocusNode,
+                                                controller: _skuController,
+                                                focusNode: _skuFocusNode,
                                                 inputType: TextInputType.text,
                                                 inputAction:
                                                     TextInputAction.done,
@@ -314,10 +353,10 @@ class AddProductScreen extends StatelessWidget {
                                                             isError: true);
                                                         return;
                                                       }
-                                                      if (_codeController
+                                                      if (_skuController
                                                           .text.isEmpty) {
                                                         showCustomSnackBar(
-                                                            'enter_the_code_key'
+                                                            'enter_the_sku_key'
                                                                 .tr,
                                                             isError: true);
                                                         return;
@@ -332,7 +371,10 @@ class AddProductScreen extends StatelessWidget {
                                                               _priceController
                                                                   .text
                                                                   .trim(),
-                                                          code: _codeController
+                                                          sku: _skuController
+                                                              .text
+                                                              .trim(),
+                                                          code: _skuController
                                                               .text
                                                               .trim(),
                                                           categoryId: Get.find<

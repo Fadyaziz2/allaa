@@ -23,6 +23,8 @@ return [
     'update_product' => 'Update product',
     'price' => 'Price',
     'code' => 'Code',
+    'sku' => 'SKU',
+    'generate' => 'Generate',
     'unit' => 'Unit',
     'description' => 'Description',
     'choose_a_unit' => 'Choose a unit',

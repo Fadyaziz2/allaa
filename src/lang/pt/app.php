@@ -24,6 +24,8 @@ return [
 'update_product'  => 'Atualizar produto',
 'price'  => 'Preço',
 'code'  => 'Código',
+'sku'  => 'SKU',
+'generate'  => 'Gerar',
 'unit'  => 'Unidade',
 'description'  => 'Descrição do produto',
 'choose_a_unit'  => 'Selecionar uma unidade',

@@ -112,7 +112,7 @@ class SelectedController extends Controller
     {
         $products = Product::query()
             ->filter(new NameFilter())
-            ->select('id', 'name', 'price')
+            ->select('id', 'name', 'price', 'sku', 'code')
             ->orderByDesc('id')
             ->get();
 //            ->paginate(request('per_page', 10));

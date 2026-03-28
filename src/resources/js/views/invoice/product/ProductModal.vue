@@ -16,9 +16,14 @@
                     <app-input type="number" id="price" :label="$t('price')" label-required :placeholder="$t('price')"
                                v-model="formData.price" :errors="$errors(errors, 'price')"/>
                 </div>
-                <div class="mb-4">
-                    <app-input type="text" id="code" :label="$t('code')" label-required :placeholder="$t('code')"
-                               v-model="formData.code" :errors="$errors(errors, 'code')"/>
+                <div class="mb-4 d-flex align-items-end gap-2">
+                    <div class="w-100">
+                        <app-input type="text" id="sku" :label="$t('sku')" label-required :placeholder="$t('sku')"
+                                   v-model="formData.sku" :errors="$errors(errors, 'sku')"/>
+                    </div>
+                    <button type="button" class="btn btn-outline-secondary mb-1" @click="generateSku">
+                        {{ $t('generate') }}
+                    </button>
                 </div>
 
                 <div class="mb-4">
@@ -52,7 +57,7 @@
 
 <script setup>
 import {useSubmitForm} from "@/core/global/composable/modal/useSubmitForm";
-import {SELECTED_UNITS, SELECTED_CATEGORY, SELECTED_BRAND, PRODUCTS} from "@services/endpoints/invoice";
+import {SELECTED_UNITS, SELECTED_CATEGORY, PRODUCTS} from "@services/endpoints/invoice";
 
 const props = defineProps({
     modalId: String,
@@ -61,9 +66,14 @@ const props = defineProps({
 })
 const emit = defineEmits(['close'])
 const {preloader, pageLoader, formData, errors, save, closeModal} = useSubmitForm(props, emit)
+
+const generateSku = () => {
+    const seed = `${Date.now()}-${Math.random().toString(36).substring(2, 7)}`
+    formData.value.sku = `SKU-${seed}`.toUpperCase()
+}
+
 const submit = () => {
+    formData.value.code = formData.value.sku
     save(props.selectedUrl ? props.selectedUrl : PRODUCTS, formData.value)
 }
 </script>
-
-

@@ -2,6 +2,7 @@ class ProductDetailsModel {
   int? id;
   String? name;
   dynamic price;
+  String? sku;
   String? code;
   int? unitId;
   int? categoryId;
@@ -11,6 +12,7 @@ class ProductDetailsModel {
       {this.id,
       this.name,
       this.price,
+      this.sku,
       this.code,
       this.unitId,
       this.categoryId,
@@ -20,7 +22,8 @@ class ProductDetailsModel {
     id = json['id'];
     name = json['name'];
     price = json['price'];
-    code = json['code'];
+    sku = json['sku'] ?? json['code'];
+    code = json['code'] ?? sku;
     unitId = json['unit_id'];
     categoryId = json['category_id'];
     description = json['description'];
@@ -31,7 +34,8 @@ class ProductDetailsModel {
     data['id'] = id;
     data['name'] = name;
     data['price'] = price;
-    data['code'] = code;
+    data['sku'] = sku;
+    data['code'] = code ?? sku;
     data['unit_id'] = unitId;
     data['category_id'] = categoryId;
     data['description'] = description;

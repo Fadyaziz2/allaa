@@ -22,6 +22,8 @@ return [
     'update_product' => 'Mettre à jour le produit',
     'price' => 'Prix',
     'code' => 'Code',
+    'sku' => 'SKU',
+    'generate' => 'Générer',
     'unit' => 'Unité',
     'description' => 'Description',
     'choose_a_unit' => 'Choisissez une unité',

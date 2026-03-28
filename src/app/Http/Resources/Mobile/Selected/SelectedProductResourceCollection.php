@@ -19,7 +19,8 @@ class SelectedProductResourceCollection extends ResourceCollection
                 return [
                     'id' => $item->id,
                     'name' => $item->name,
-                    'price' => $item->price
+                    'price' => $item->price,
+                    'sku' => $item->sku ?: $item->code
                 ];
             }),
 //            'pagination' => [

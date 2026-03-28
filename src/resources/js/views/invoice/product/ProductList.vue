@@ -63,9 +63,9 @@ const options = ref({
             modifier: (price => numberWithCurrencySymbol(price))
         },
         {
-            title: t('code'),
+            title: t('sku'),
             type: 'text',
-            key: 'code',
+            key: 'sku',
         },
         {
             title: t('unit'),
