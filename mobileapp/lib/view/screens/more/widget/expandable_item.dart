@@ -248,6 +248,18 @@ createDrawerExpandableList() {
             ),
         ],
       ),
+
+    if ((permissionData.isAppAdmin!) || (permissionData.viewProducts! || permissionData.createProducts!))
+      DrawerExpandableModel(
+        title: 'wastages_key',
+        svgImagePath: Images.productIcon,
+        expandableItem: [
+          DrawerExpandableItemModel(
+            title: 'all_wastages_key',
+            routePath: RouteHelper.getWastageRoute(),
+          ),
+        ],
+      ),
     if ((permissionData.isAppAdmin!) ||
         (permissionData.incomeReportView! || permissionData.expenseReportView!))
       DrawerExpandableModel(

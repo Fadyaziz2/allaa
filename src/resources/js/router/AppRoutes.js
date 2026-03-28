@@ -32,6 +32,14 @@ export default [
                 },
             },
             {
+                path: "wastages",
+                name: "wastages",
+                component: () => import("@/invoice/wastage/WastageList.vue"),
+                meta: {
+                    hasPermission: () => canAccess("view_products"),
+                },
+            },
+            {
                 path: "units",
                 name: "units",
                 component: () => import("@/invoice/unit/UnitList.vue"),

@@ -12,6 +12,7 @@ use App\Http\Controllers\Invoice\PaymentMethod\PaymentMethodController;
 use App\Http\Controllers\Invoice\Product\ProductController;
 use App\Http\Controllers\Invoice\Tax\TaxController;
 use App\Http\Controllers\Invoice\Unit\UnitController;
+use App\Http\Controllers\Invoice\Wastage\WastageController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ Route::group(['prefix' => 'invoice/setup', 'middleware' => 'admin'], function (R
     $router->apiResource('units', UnitController::class);
     $router->apiResource('expenses', ExpenseController::class);
     $router->apiResource('products', ProductController::class);
+    $router->apiResource('wastages', WastageController::class)->only(['index', 'store']);
     $router->apiResource('taxes', TaxController::class);
     $router->apiResource('payment-methods', PaymentMethodController::class);
     $router->apiResource('notes', NoteController::class);

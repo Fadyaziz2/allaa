@@ -484,5 +484,13 @@ return [
     'created_at' => 'Created at',
     'total_products' => 'Total products',
     'documentation' => 'Documentation',
+    'wastage' => 'Wastage',
+    'wastages' => 'Wastage list',
+    'all_wastages' => 'All wastages',
+    'add_wastage' => 'Add wastage',
+    'wastage_date' => 'Wastage date',
+    'deduct_quantity' => 'Deduct quantity',
+    'not_enough_stock' => 'Not enough stock available',
+    'wastage_has_been_created_failed' => 'Wastage has been created failed',
 
 ];

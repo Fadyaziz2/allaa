@@ -30,6 +30,7 @@ import '../controller/product_controller.dart';
 import '../controller/report_controller.dart';
 import '../controller/taxes_controller.dart';
 import '../controller/transaction_controller.dart';
+import '../controller/wastage_controller.dart';
 import '../data/api/api_client.dart';
 import '../data/model/response/language_model.dart';
 import '../data/repository/administrator_role_repo.dart';
@@ -39,6 +40,7 @@ import '../data/repository/customer_repo.dart';
 import '../data/repository/dashboard_repo.dart';
 import '../data/repository/estimate_repo.dart';
 import '../data/repository/product_repo.dart';
+import '../data/repository/wastage_repo.dart';
 import '../util/app_constants.dart';
 
 Future<Map<String, Map<String, String>>> init() async {
@@ -60,6 +62,7 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => CustomerRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() => ExpensesRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
   Get.lazyPut(() => ProductRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
+  Get.lazyPut(() => WastageRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
 
   Get.lazyPut(() => TaxRepo(apiClient: Get.find(), sharedPreferences: Get.find()));
 
@@ -87,6 +90,7 @@ Future<Map<String, Map<String, String>>> init() async {
 
 
   Get.lazyPut(() => ProductController(productRepo: Get.find()));
+  Get.lazyPut(() => WastageController(wastageRepo: Get.find()));
   Get.lazyPut(() => EstimateController(estimateRepo: Get.find()));
   Get.lazyPut(() => CustomerController(customerRepo: Get.find()));
   Get.lazyPut(() => InvoiceController(invoiceRepo: Get.find()));

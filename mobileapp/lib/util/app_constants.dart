@@ -128,6 +128,10 @@ class AppConstants {
   static const String THERMAL_INVOICE_DOWNLOAD_URI =
       '/thermal-invoice-download/';
 
+  // Wastage
+  static const String GET_WASTAGES_URI = '/wastages';
+  static const String ADD_WASTAGES_URI = '/wastages';
+
   // Product
   static const String GET_PRODUCTS_URI = '/products';
   static const String ADD_PRODUCT_URI = '/products';

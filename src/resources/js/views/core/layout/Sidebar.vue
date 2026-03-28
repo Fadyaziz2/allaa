@@ -181,6 +181,11 @@ const sidebarData = ref([
                 name: t("units"),
                 permission: canAccess("view_units"),
             },
+            {
+                url: "/wastages",
+                name: t("wastages"),
+                permission: canAccess("view_products"),
+            },
         ],
     },
     {
