@@ -85,7 +85,7 @@ class ProductItem extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(
                                       Dimensions.RADIUS_EXTRA_LARGE)),
                               child: Text(
-                                "${'code_key'.tr}: ${productModel.code}",
+                                "${'sku_key'.tr}: ${productModel.sku ?? productModel.code}",
                                 style: poppinsMedium.copyWith(
                                     overflow: TextOverflow.ellipsis,
                                     fontSize: Dimensions.FONT_SIZE_SMALL,

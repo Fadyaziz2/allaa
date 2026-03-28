@@ -354,5 +354,9 @@
   "add_unit_key": "Add Unit",
   "write_unit_name_here_key": "Write unit name here.",
   "please_enter_the_unit_name_key": "Please enter the unit name",
-  "add_product_category_key": "Add product category"
+  "add_product_category_key": "Add product category",
+  "sku_key": "SKU",
+  "generate_key": "Generate",
+  "scan_barcode_key": "Scan barcode",
+  "enter_the_sku_key": "Enter the SKU"
 }

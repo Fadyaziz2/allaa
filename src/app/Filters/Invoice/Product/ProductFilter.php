@@ -12,7 +12,11 @@ class ProductFilter extends BaseFilter
 
     public function search($search = null): void
     {
-        $this->builder->when($search, fn(Builder $builder) => $builder->where('name', 'LIKE', "%$search%"));
+        $this->builder->when($search, fn(Builder $builder) => $builder->where(function (Builder $query) use ($search) {
+            $query->where('name', 'LIKE', "%$search%")
+                ->orWhere('sku', 'LIKE', "%$search%")
+                ->orWhere('code', 'LIKE', "%$search%");
+        }));
     }
 
     public function unit($ids = null): void

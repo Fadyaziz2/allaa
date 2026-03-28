@@ -24,7 +24,7 @@ class ProductController extends Controller
     {
         $products = Product::query()
             ->filter($this->filter)
-            ->select(['id', 'name', 'code', 'category_id', 'price'])
+            ->select(['id', 'name', 'code', 'sku', 'category_id', 'price'])
             ->with('category:id,name')
             ->orderByDesc('id')
             ->paginate(request('per_page', 10));

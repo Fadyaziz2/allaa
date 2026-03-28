@@ -18,7 +18,8 @@ class ProductResourceCollection extends ResourceCollection
             'data' => $this->collection->map(fn($data) => [
                 'id' => $data->id,
                 'name' => $data->name,
-                'code' => $data->code,
+                'sku' => $data->sku ?: $data->code,
+                'code' => $data->sku ?: $data->code,
                 'category_name' => $data->category?->name,
                 'price' => number_with_currency_symbol($data->price)
             ]),
