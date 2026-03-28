@@ -489,7 +489,7 @@ class ProductController extends GetxController implements GetxService {
       Get.back();
       showCustomSnackBar(response.body['message'], isError: false);
       await getProductCategoryList();
-      await getCategories();
+      await Get.find<ExpensesController>().getCategories(fromProduct: true);
     } else {
       ApiChecker.checkApi(response);
     }
@@ -508,7 +508,7 @@ class ProductController extends GetxController implements GetxService {
       Get.back();
       showCustomSnackBar(response.body['message'], isError: false);
       await getProductCategoryList();
-      await getCategories();
+      await Get.find<ExpensesController>().getCategories(fromProduct: true);
     } else {
       ApiChecker.checkApi(response);
     }
