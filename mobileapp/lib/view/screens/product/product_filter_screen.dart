@@ -4,6 +4,7 @@ import 'package:invoicex/controller/expenses_controller.dart';
 import 'package:invoicex/controller/product_controller.dart';
 import 'package:invoicex/view/base/custom_app_bar.dart';
 import 'package:invoicex/view/base/custom_button.dart';
+import 'package:invoicex/view/base/custom_text_field.dart';
 import 'package:invoicex/view/base/loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -63,6 +64,17 @@ class ProductFilterScreen extends StatelessWidget {
                           ),
                           child: Column(
                             children: [
+                              CustomTextField(
+                                header: 'product_name_key'.tr,
+                                hintText: 'search_key'.tr,
+                                controller:
+                                    productController.productNameFilterController,
+                                borderColor: Theme.of(context).disabledColor,
+                              ),
+
+                              const SizedBox(
+                                  height: Dimensions.PADDING_SIZE_DEFAULT),
+
                               // Category section
                               GetBuilder<ExpensesController>(
                                   builder: (expensesController) {

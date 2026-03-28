@@ -124,6 +124,10 @@ class ProductController extends GetxController implements GetxService {
   String? _categoriesDWBackUpValue;
   String? get categoriesDWBackUpValue => _categoriesDWBackUpValue;
 
+  final TextEditingController productNameFilterController =
+      TextEditingController();
+  String _productNameFilterBackUpValue = "";
+
   bool _isTransactionFilter = false;
   bool get isTransactionFilter => _isTransactionFilter;
 
@@ -191,13 +195,15 @@ class ProductController extends GetxController implements GetxService {
           _categoriesDWValue != null ? _categoriesDWValue : "";
       _unitsDWBackUpValue =
           _unitsFilterDWValue != null ? _unitsFilterDWValue : "";
+      _productNameFilterBackUpValue = productNameFilterController.text.trim();
     }
     final response = await productRepo.getProducts(
         url: _productsNextPageUrl,
         fromFilter: _isTransactionFilter,
         category: _categoriesDWBackUpValue ?? "",
         unit: _unitsDWBackUpValue ?? "",
-        lowStock: _lowStockFilterDWValue ?? "");
+        lowStock: _lowStockFilterDWValue ?? "",
+        searchKey: _productNameFilterBackUpValue);
     if (response.statusCode == 200 && response.body['status'] == true) {
       response.body['result']['data'].forEach((item) {
         _productList.add(ProductModel.fromJson(item));
@@ -667,6 +673,8 @@ class ProductController extends GetxController implements GetxService {
     _unitsFilterDWValue = null;
     _lowStockFilterDWValue = null;
     _unitsDWValue = null;
+    _productNameFilterBackUpValue = "";
+    productNameFilterController.clear();
     update();
   }
 
@@ -674,7 +682,8 @@ class ProductController extends GetxController implements GetxService {
     if (_categoriesDWValue == null &&
         _unitsDWValue == null &&
         _unitsFilterDWValue == null &&
-        _lowStockFilterDWValue == null) {
+        _lowStockFilterDWValue == null &&
+        productNameFilterController.text.trim().isEmpty) {
       return true;
     } else {
       return false;
