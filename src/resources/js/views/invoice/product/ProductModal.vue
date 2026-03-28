@@ -16,6 +16,20 @@
                     <app-input type="number" id="price" :label="$t('price')" label-required :placeholder="$t('price')"
                                v-model="formData.price" :errors="$errors(errors, 'price')"/>
                 </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <app-input type="number" id="opening_quantity" :label="$t('opening_quantity')" :placeholder="$t('opening_quantity')"
+                                   v-model="formData.opening_quantity" :errors="$errors(errors, 'opening_quantity')"/>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <app-input type="number" id="alert_quantity" :label="$t('alert_quantity')" :placeholder="$t('alert_quantity')"
+                                   v-model="formData.alert_quantity" :errors="$errors(errors, 'alert_quantity')"/>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <app-input type="number" id="last_purchase_price" :label="$t('last_purchase_price')" :placeholder="$t('last_purchase_price')"
+                               v-model="formData.last_purchase_price" :errors="$errors(errors, 'last_purchase_price')"/>
+                </div>
                 <div class="mb-4 d-flex align-items-end gap-2">
                     <div class="w-100">
                         <app-input type="text" id="sku" :label="$t('sku')" label-required :placeholder="$t('sku')"

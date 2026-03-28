@@ -358,5 +358,9 @@
   "sku_key": "SKU",
   "generate_key": "Generate",
   "scan_barcode_key": "Scan barcode",
-  "enter_the_sku_key": "Enter the SKU"
+  "enter_the_sku_key": "Enter the SKU",
+  "opening_quantity_key": "Opening quantity",
+  "alert_quantity_key": "Alert quantity",
+  "last_purchase_price_key": "Last purchase price",
+  "low_stock_products_key": "Low stock products"
 }

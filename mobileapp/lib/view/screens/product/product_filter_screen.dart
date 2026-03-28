@@ -99,6 +99,23 @@ class ProductFilterScreen extends StatelessWidget {
                                   print('object${value}');
                                 },
                               ),
+
+                              const SizedBox(
+                                  height: Dimensions.PADDING_SIZE_DEFAULT),
+
+                              CustomDropDown(
+                                isRequired: false,
+                                title: 'low_stock_products_key'.tr,
+                                textColor: Colors.black,
+                                dwItems: [
+                                  {'id': '1', 'value': 'yes_key'.tr},
+                                ],
+                                dwValue: productController.lowStockFilterDWValue,
+                                hintText: 'all_key'.tr,
+                                onChange: (value) {
+                                  productController.setLowStockFilterDWValue(value);
+                                },
+                              ),
                             ],
                           ),
                         ),

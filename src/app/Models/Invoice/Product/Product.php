@@ -7,6 +7,7 @@ use App\Models\Invoice\Category\Category;
 use App\Models\Invoice\Unit\Unit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends BaseModel
 {
@@ -15,6 +16,10 @@ class Product extends BaseModel
     protected $fillable = [
         'name',
         'price',
+        'opening_quantity',
+        'current_quantity',
+        'alert_quantity',
+        'last_purchase_price',
         'code',
         'sku',
         'unit_id',
@@ -25,7 +30,11 @@ class Product extends BaseModel
     protected $casts = [
       'unit_id' => 'int',
       'category_id' => 'int',
-      'price' => 'double'
+      'price' => 'double',
+      'opening_quantity' => 'double',
+      'current_quantity' => 'double',
+      'alert_quantity' => 'double',
+      'last_purchase_price' => 'double',
     ];
 
     public function category(): BelongsTo
@@ -36,5 +45,10 @@ class Product extends BaseModel
     public function unit(): BelongsTo
     {
         return $this->belongsTo(Unit::class);
+    }
+
+    public function stockMovements(): HasMany
+    {
+        return $this->hasMany(ProductStockMovement::class);
     }
 }

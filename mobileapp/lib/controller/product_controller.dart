@@ -45,6 +45,8 @@ class ProductController extends GetxController implements GetxService {
 
   String? _unitsFilterDWValue;
   String? get unitsFilterDWValue => _unitsFilterDWValue;
+  String? _lowStockFilterDWValue;
+  String? get lowStockFilterDWValue => _lowStockFilterDWValue;
 
   String? _unitsDWBackUpValue;
   String? get unitsDWBackUpValue => _unitsDWBackUpValue;
@@ -178,7 +180,8 @@ class ProductController extends GetxController implements GetxService {
         url: _productsNextPageUrl,
         fromFilter: _isTransactionFilter,
         category: _categoriesDWBackUpValue ?? "",
-        unit: _unitsDWBackUpValue ?? "");
+        unit: _unitsDWBackUpValue ?? "",
+        lowStock: _lowStockFilterDWValue ?? "");
     if (response.statusCode == 200 && response.body['status'] == true) {
       response.body['result']['data'].forEach((item) {
         _productList.add(ProductModel.fromJson(item));
@@ -241,6 +244,11 @@ class ProductController extends GetxController implements GetxService {
   // Set unit filter dw value
   setFilterUnitDWValue(String? value) {
     _unitsFilterDWValue = value;
+    update();
+  }
+
+  setLowStockFilterDWValue(String? value) {
+    _lowStockFilterDWValue = value;
     update();
   }
 
@@ -439,6 +447,7 @@ class ProductController extends GetxController implements GetxService {
   void refreshFilterForm() {
     _categoriesDWValue = null;
     _unitsFilterDWValue = null;
+    _lowStockFilterDWValue = null;
     _unitsDWValue = null;
     update();
   }
@@ -446,7 +455,8 @@ class ProductController extends GetxController implements GetxService {
   bool isEmptyFilterForm() {
     if (_categoriesDWValue == null &&
         _unitsDWValue == null &&
-        _unitsFilterDWValue == null) {
+        _unitsFilterDWValue == null &&
+        _lowStockFilterDWValue == null) {
       return true;
     } else {
       return false;

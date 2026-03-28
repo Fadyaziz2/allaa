@@ -21,7 +21,13 @@ class ProductResourceCollection extends ResourceCollection
                 'sku' => $data->sku ?: $data->code,
                 'code' => $data->sku ?: $data->code,
                 'category_name' => $data->category?->name,
-                'price' => number_with_currency_symbol($data->price)
+                'price' => number_with_currency_symbol($data->price),
+                'current_quantity' => (float)$data->current_quantity,
+                'alert_quantity' => (float)$data->alert_quantity,
+                'last_purchase_price' => $data->last_purchase_price
+                    ? number_with_currency_symbol($data->last_purchase_price)
+                    : null,
+                'is_low_stock' => (float)$data->current_quantity <= (float)$data->alert_quantity
             ]),
 
             'pagination' => [

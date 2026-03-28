@@ -127,6 +127,19 @@ class ProductItem extends StatelessWidget {
                           ),
                         ],
                       )
+                      ,
+                      const SizedBox(
+                        height: Dimensions.FREE_SIZE_DEFAULT - 6,
+                      ),
+                      Text(
+                        "${'quantity_key'.tr}: ${productModel.currentQuantity ?? 0}  •  ${'alert_quantity_key'.tr}: ${productModel.alertQuantity ?? 0}",
+                        style: poppinsRegular.copyWith(
+                          fontSize: Dimensions.FONT_SIZE_SMALL,
+                          color: productModel.isLowStock == true
+                              ? Colors.red
+                              : Theme.of(context).disabledColor,
+                        ),
+                      )
                     ],
                   ),
                 ),

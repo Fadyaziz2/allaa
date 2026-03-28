@@ -7,6 +7,11 @@ class ProductDetailsModel {
   int? unitId;
   int? categoryId;
   String? description;
+  dynamic openingQuantity;
+  dynamic currentQuantity;
+  dynamic alertQuantity;
+  dynamic lastPurchasePrice;
+  List<dynamic>? stockMovements;
 
   ProductDetailsModel(
       {this.id,
@@ -16,7 +21,12 @@ class ProductDetailsModel {
       this.code,
       this.unitId,
       this.categoryId,
-      this.description});
+      this.description,
+      this.openingQuantity,
+      this.currentQuantity,
+      this.alertQuantity,
+      this.lastPurchasePrice,
+      this.stockMovements});
 
   ProductDetailsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -27,6 +37,11 @@ class ProductDetailsModel {
     unitId = json['unit_id'];
     categoryId = json['category_id'];
     description = json['description'];
+    openingQuantity = json['opening_quantity'];
+    currentQuantity = json['current_quantity'];
+    alertQuantity = json['alert_quantity'];
+    lastPurchasePrice = json['last_purchase_price'];
+    stockMovements = json['stock_movements'];
   }
 
   Map<String, dynamic> toJson() {
@@ -39,6 +54,11 @@ class ProductDetailsModel {
     data['unit_id'] = unitId;
     data['category_id'] = categoryId;
     data['description'] = description;
+    data['opening_quantity'] = openingQuantity;
+    data['current_quantity'] = currentQuantity;
+    data['alert_quantity'] = alertQuantity;
+    data['last_purchase_price'] = lastPurchasePrice;
+    data['stock_movements'] = stockMovements;
     return data;
   }
 }
