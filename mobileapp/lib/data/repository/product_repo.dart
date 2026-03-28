@@ -49,6 +49,17 @@ class ProductRepo {
     );
   }
 
+  Future<Response> updateUnit({required int id, required String name}) async {
+    return await apiClient.patchData(
+      "${AppConstants.UPDATE_UNITS_URI}$id",
+      {'name': name, 'short_name': name},
+    );
+  }
+
+  Future<Response> deleteUnit({required int id}) async {
+    return await apiClient.deleteData("${AppConstants.DELETE_UNITS_URI}$id");
+  }
+
   Future<Response> getProductCategories({String? url, String? searchKey}) async {
     return await apiClient.getData(
       url != null
@@ -63,6 +74,19 @@ class ProductRepo {
       AppConstants.ADD_PRODUCT_CATEGORIES_URI,
       {'name': name},
     );
+  }
+
+  Future<Response> updateProductCategory(
+      {required int id, required String name}) async {
+    return await apiClient.patchData(
+      "${AppConstants.UPDATE_PRODUCT_CATEGORIES_URI}$id",
+      {'name': name},
+    );
+  }
+
+  Future<Response> deleteProductCategory({required int id}) async {
+    return await apiClient
+        .deleteData("${AppConstants.DELETE_PRODUCT_CATEGORIES_URI}$id");
   }
 
   // Add Product

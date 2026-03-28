@@ -13,6 +13,7 @@ import 'package:invoicex/view/base/custom_snackbar.dart';
 import 'package:invoicex/view/base/custom_text_field.dart';
 import 'package:invoicex/view/base/loading_indicator.dart';
 import 'package:invoicex/view/base/nothing_to_show_here.dart';
+import 'package:invoicex/view/base/show_custom_popup_menu.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ProductCategoriesScreen extends StatefulWidget {
@@ -122,9 +123,25 @@ class _ProductCategoriesScreenState extends State<ProductCategoriesScreen> {
                   child: Center(child: LoadingIndicator()),
                 );
               }
-              return Text(
-                productController.productCategoryList[index].name ?? '-',
-                style: poppinsRegular,
+              final category = productController.productCategoryList[index];
+              return InkWell(
+                onTap: () {
+                  final permissionData =
+                      Get.find<PermissionController>().permissionModel;
+                  if (permissionData!.isAppAdmin! ||
+                      permissionData.updateCategories! ||
+                      permissionData.deleteCategories!) {
+                    productController.createProductCategoryMoreList();
+                    productController.setSelectedProductCategoryIndex(index);
+                    productController.categoryNameController.text =
+                        category.name ?? '';
+                    showPopupMenu(context, productController.productCategoryMoreList);
+                  }
+                },
+                child: Text(
+                  category.name ?? '-',
+                  style: poppinsRegular,
+                ),
               );
             },
             separatorBuilder: (_, __) => Divider(color: Theme.of(context).disabledColor.withOpacity(.3)),

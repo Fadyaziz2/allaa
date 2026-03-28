@@ -57,6 +57,10 @@ class ProductCategoryController extends Controller
 
     public function update(Request $request, Category $product_category): JsonResponse
     {
+        if ($product_category->type !== 'category') {
+            return error_response('Data not found', 404);
+        }
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
         ]);
@@ -71,6 +75,10 @@ class ProductCategoryController extends Controller
 
     public function destroy(Category $product_category): JsonResponse
     {
+        if ($product_category->type !== 'category') {
+            return error_response('Data not found', 404);
+        }
+
         $product_category->delete();
 
         return success_response('Data deleted successfully');

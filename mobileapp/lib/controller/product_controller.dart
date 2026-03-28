@@ -3,6 +3,7 @@ import 'package:invoicex/data/model/body/add_product_body.dart';
 import 'package:invoicex/data/model/response/product_details_model.dart';
 import 'package:invoicex/data/model/response/unit_model.dart';
 import 'package:invoicex/data/repository/product_repo.dart';
+import 'package:flutter/material.dart';
 import 'package:invoicex/helper/route_helper.dart';
 import 'package:get/get.dart';
 import '../data/api/api_checker.dart';
@@ -83,6 +84,21 @@ class ProductController extends GetxController implements GetxService {
 
   bool _addUnitLoading = false;
   bool get addUnitLoading => _addUnitLoading;
+
+  int? _selectedProductCategoryIndex;
+  int? get selectedProductCategoryIndex => _selectedProductCategoryIndex;
+
+  int? _selectedUnitIndex;
+  int? get selectedUnitIndex => _selectedUnitIndex;
+
+  final TextEditingController categoryNameController = TextEditingController();
+  final TextEditingController unitNameController = TextEditingController();
+
+  List<PopupModel> _productCategoryMoreList = [];
+  List<PopupModel> get productCategoryMoreList => _productCategoryMoreList;
+
+  List<PopupModel> _unitMoreList = [];
+  List<PopupModel> get unitMoreList => _unitMoreList;
 
   String? _unitsManagementNextPageUrl;
   String? get unitsManagementNextPageUrl => _unitsManagementNextPageUrl;
@@ -387,6 +403,107 @@ class ProductController extends GetxController implements GetxService {
     return responseModel;
   }
 
+  void setSelectedProductCategoryIndex(int index) {
+    _selectedProductCategoryIndex = index;
+  }
+
+  void createProductCategoryMoreList() {
+    _productCategoryMoreList = [
+      if (Get.find<PermissionController>().permissionModel!.isAppAdmin! ||
+          Get.find<PermissionController>().permissionModel!.updateCategories!)
+        PopupModel(
+          image: Images.edit,
+          title: 'edit_key',
+          route: '',
+          isRoute: false,
+          widget: ConfirmationDialog(
+            leftBtnTitle: 'cancel_key',
+            rightBtnTitle: 'save_key',
+            titleBodyWidget: Column(
+              children: [
+                Text('edit_key'.tr),
+                const SizedBox(height: 16),
+                GetBuilder<ProductController>(builder: (controller) {
+                  return TextField(
+                    controller: controller.categoryNameController,
+                    decoration: InputDecoration(
+                      hintText: 'write_category_name_here_key'.tr,
+                    ),
+                  );
+                }),
+                const SizedBox(height: 12),
+              ],
+            ),
+            rightBtnOnTap: () {
+              if (categoryNameController.text.trim().isEmpty) {
+                showCustomSnackBar('please_enter_the_category_name_key'.tr,
+                    isError: true);
+                return;
+              }
+              editProductCategory(name: categoryNameController.text.trim());
+            },
+          ),
+        ),
+      if (Get.find<PermissionController>().permissionModel!.isAppAdmin! ||
+          Get.find<PermissionController>().permissionModel!.deleteCategories!)
+        PopupModel(
+          image: Images.delete,
+          title: 'delete_key',
+          route: '',
+          isRoute: false,
+          widget: ConfirmationDialog(
+            svgImagePath: Images.deleteDialogIcon,
+            description: 'this_content_will_be_deleted_key',
+            title: "you_want_to_delete_key",
+            leftBtnTitle: 'no_key',
+            rightBtnTitle: 'yes_key',
+            rightBtnOnTap: () {
+              deleteProductCategory();
+            },
+          ),
+        ),
+    ];
+  }
+
+  Future<void> editProductCategory({required String name}) async {
+    if (_selectedProductCategoryIndex == null) return;
+    Get.find<ExpensesController>().setDialogLoading(true);
+    final response = await productRepo.updateProductCategory(
+      id: _productCategoryList[_selectedProductCategoryIndex!].id!,
+      name: name,
+    );
+
+    if (response.statusCode == 200 && response.body['status'] == true) {
+      Get.back();
+      showCustomSnackBar(response.body['message'], isError: false);
+      await getProductCategoryList();
+      await getCategories();
+    } else {
+      ApiChecker.checkApi(response);
+    }
+    Get.find<ExpensesController>().setDialogLoading(false);
+    update();
+  }
+
+  Future<void> deleteProductCategory() async {
+    if (_selectedProductCategoryIndex == null) return;
+    Get.find<ExpensesController>().setDialogLoading(true);
+    final response = await productRepo.deleteProductCategory(
+      id: _productCategoryList[_selectedProductCategoryIndex!].id!,
+    );
+
+    if (response.statusCode == 200 && response.body['status'] == true) {
+      Get.back();
+      showCustomSnackBar(response.body['message'], isError: false);
+      await getProductCategoryList();
+      await getCategories();
+    } else {
+      ApiChecker.checkApi(response);
+    }
+    Get.find<ExpensesController>().setDialogLoading(false);
+    update();
+  }
+
   Future<void> getUnitsManagementList({bool isPaginate = false}) async {
     if (isPaginate) {
       _unitsManagementPaginateLoading = true;
@@ -436,6 +553,107 @@ class ProductController extends GetxController implements GetxService {
     _addUnitLoading = false;
     update();
     return responseModel;
+  }
+
+  void setSelectedUnitIndex(int index) {
+    _selectedUnitIndex = index;
+  }
+
+  void createUnitMoreList() {
+    _unitMoreList = [
+      if (Get.find<PermissionController>().permissionModel!.isAppAdmin! ||
+          Get.find<PermissionController>().permissionModel!.updateUnits!)
+        PopupModel(
+          image: Images.edit,
+          title: 'edit_key',
+          route: '',
+          isRoute: false,
+          widget: ConfirmationDialog(
+            leftBtnTitle: 'cancel_key',
+            rightBtnTitle: 'save_key',
+            titleBodyWidget: Column(
+              children: [
+                Text('edit_key'.tr),
+                const SizedBox(height: 16),
+                GetBuilder<ProductController>(builder: (controller) {
+                  return TextField(
+                    controller: controller.unitNameController,
+                    decoration: InputDecoration(
+                      hintText: 'write_unit_name_here_key'.tr,
+                    ),
+                  );
+                }),
+                const SizedBox(height: 12),
+              ],
+            ),
+            rightBtnOnTap: () {
+              if (unitNameController.text.trim().isEmpty) {
+                showCustomSnackBar('please_enter_the_unit_name_key'.tr,
+                    isError: true);
+                return;
+              }
+              editUnit(name: unitNameController.text.trim());
+            },
+          ),
+        ),
+      if (Get.find<PermissionController>().permissionModel!.isAppAdmin! ||
+          Get.find<PermissionController>().permissionModel!.deleteUnits!)
+        PopupModel(
+          image: Images.delete,
+          title: 'delete_key',
+          route: '',
+          isRoute: false,
+          widget: ConfirmationDialog(
+            svgImagePath: Images.deleteDialogIcon,
+            description: 'this_content_will_be_deleted_key',
+            title: "you_want_to_delete_key",
+            leftBtnTitle: 'no_key',
+            rightBtnTitle: 'yes_key',
+            rightBtnOnTap: () {
+              deleteUnit();
+            },
+          ),
+        ),
+    ];
+  }
+
+  Future<void> editUnit({required String name}) async {
+    if (_selectedUnitIndex == null) return;
+    Get.find<ExpensesController>().setDialogLoading(true);
+    final response = await productRepo.updateUnit(
+      id: _unitsManagementList[_selectedUnitIndex!].id!,
+      name: name,
+    );
+
+    if (response.statusCode == 200 && response.body['status'] == true) {
+      Get.back();
+      showCustomSnackBar(response.body['message'], isError: false);
+      await getUnitsManagementList();
+      await getUnits();
+    } else {
+      ApiChecker.checkApi(response);
+    }
+    Get.find<ExpensesController>().setDialogLoading(false);
+    update();
+  }
+
+  Future<void> deleteUnit() async {
+    if (_selectedUnitIndex == null) return;
+    Get.find<ExpensesController>().setDialogLoading(true);
+    final response = await productRepo.deleteUnit(
+      id: _unitsManagementList[_selectedUnitIndex!].id!,
+    );
+
+    if (response.statusCode == 200 && response.body['status'] == true) {
+      Get.back();
+      showCustomSnackBar(response.body['message'], isError: false);
+      await getUnitsManagementList();
+      await getUnits();
+    } else {
+      ApiChecker.checkApi(response);
+    }
+    Get.find<ExpensesController>().setDialogLoading(false);
+    update();
   }
 
   //  Set category list selected index

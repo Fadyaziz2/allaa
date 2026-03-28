@@ -13,6 +13,7 @@ import 'package:invoicex/view/base/custom_snackbar.dart';
 import 'package:invoicex/view/base/custom_text_field.dart';
 import 'package:invoicex/view/base/loading_indicator.dart';
 import 'package:invoicex/view/base/nothing_to_show_here.dart';
+import 'package:invoicex/view/base/show_custom_popup_menu.dart';
 import 'package:flutter_svg/svg.dart';
 
 class UnitsScreen extends StatefulWidget {
@@ -120,9 +121,24 @@ class _UnitsScreenState extends State<UnitsScreen> {
                   child: Center(child: LoadingIndicator()),
                 );
               }
-              return Text(
-                productController.unitsManagementList[index].name ?? '-',
-                style: poppinsRegular,
+              final unit = productController.unitsManagementList[index];
+              return InkWell(
+                onTap: () {
+                  final permissionData =
+                      Get.find<PermissionController>().permissionModel;
+                  if (permissionData!.isAppAdmin! ||
+                      permissionData.updateUnits! ||
+                      permissionData.deleteUnits!) {
+                    productController.createUnitMoreList();
+                    productController.setSelectedUnitIndex(index);
+                    productController.unitNameController.text = unit.name ?? '';
+                    showPopupMenu(context, productController.unitMoreList);
+                  }
+                },
+                child: Text(
+                  unit.name ?? '-',
+                  style: poppinsRegular,
+                ),
               );
             },
             separatorBuilder: (_, __) => Divider(color: Theme.of(context).disabledColor.withOpacity(.3)),
