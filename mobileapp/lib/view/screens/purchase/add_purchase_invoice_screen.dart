@@ -106,8 +106,21 @@ class _AddPurchaseInvoiceScreenState extends State<AddPurchaseInvoiceScreen> {
             const SizedBox(height: 16),
             CustomButton(
               buttonText: 'save_key'.tr,
-              isLoading: c.actionLoading,
-              onPressed: () => c.submitPurchaseInvoice(id: widget.isUpdate == '1' ? model?.id : null),
+              buttonTextWidget: c.actionLoading
+                  ? SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).cardColor),
+                      ),
+                    )
+                  : null,
+              onPressed: () {
+                if (!c.actionLoading) {
+                  c.submitPurchaseInvoice(id: widget.isUpdate == '1' ? model?.id : null);
+                }
+              },
             )
           ],
         );

@@ -47,8 +47,21 @@ class _AddSupplierScreenState extends State<AddSupplierScreen> {
             const SizedBox(height: 24),
             CustomButton(
               buttonText: 'save_key'.tr,
-              isLoading: controller.actionLoading,
-              onPressed: () => c.addSupplier(id: widget.isUpdate == '1' ? supplier?.id : null),
+              buttonTextWidget: controller.actionLoading
+                  ? SizedBox(
+                      height: 20,
+                      width: 20,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2,
+                        valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).cardColor),
+                      ),
+                    )
+                  : null,
+              onPressed: () {
+                if (!controller.actionLoading) {
+                  c.addSupplier(id: widget.isUpdate == '1' ? supplier?.id : null);
+                }
+              },
             )
           ],
         );
