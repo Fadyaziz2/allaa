@@ -19,10 +19,16 @@ class ProductRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $sku = $this->input('sku') ?: $this->input('code');
+        $openingQuantity = $this->input('opening_quantity', 0);
+        $currentQuantity = $this->route('product')
+            ? $this->input('current_quantity', $this->route('product')->current_quantity)
+            : $this->input('current_quantity', $openingQuantity);
 
         $this->merge([
             'sku' => $sku,
             'code' => $this->input('code') ?: $sku,
+            'opening_quantity' => $openingQuantity,
+            'current_quantity' => $currentQuantity,
         ]);
     }
 
@@ -36,6 +42,10 @@ class ProductRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'price' => ['required', 'numeric', new MaxDigitsPrecision(16)],
+            'opening_quantity' => ['nullable', 'numeric', 'min:0', new MaxDigitsPrecision(16)],
+            'current_quantity' => ['nullable', 'numeric', new MaxDigitsPrecision(16)],
+            'alert_quantity' => ['nullable', 'numeric', 'min:0', new MaxDigitsPrecision(16)],
+            'last_purchase_price' => ['nullable', 'numeric', 'min:0', new MaxDigitsPrecision(16)],
             'sku' => ['required', 'max:50', Rule::unique('products', 'sku')->ignore($productId)],
             'code' => ['nullable', 'max:50'],
             'unit_id' => ['nullable', 'exists:units,id'],

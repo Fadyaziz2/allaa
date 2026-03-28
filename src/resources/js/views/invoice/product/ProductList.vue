@@ -63,6 +63,22 @@ const options = ref({
             modifier: (price => numberWithCurrencySymbol(price))
         },
         {
+            title: t('current_quantity'),
+            type: 'text',
+            key: 'current_quantity',
+        },
+        {
+            title: t('alert_quantity'),
+            type: 'text',
+            key: 'alert_quantity',
+        },
+        {
+            title: t('last_purchase_price'),
+            type: 'object',
+            key: 'last_purchase_price',
+            modifier: (price => price ? numberWithCurrencySymbol(price) : '-')
+        },
+        {
             title: t('sku'),
             type: 'text',
             key: 'sku',
@@ -105,6 +121,16 @@ const options = ref({
             rowPerLoad: 10,
             fetchUrl: `${SELECTED_UNITS}`,
             permission: true,
+        },
+        {
+            label: t('low_stock_products'),
+            type: 'search-select',
+            key: 'low_stock',
+            options: [
+                {id: '', name: t('all')},
+                {id: 1, name: t('yes')}
+            ],
+            permission: true
         }
     ],
     actions: [
@@ -148,5 +174,3 @@ const productExport = () => {
     })
 }
 </script>
-
-

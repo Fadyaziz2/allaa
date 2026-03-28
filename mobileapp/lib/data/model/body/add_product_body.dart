@@ -6,6 +6,9 @@ class AddProductBody {
   late String categoryId;
   late String unitId;
   late String description;
+  late String openingQuantity;
+  late String alertQuantity;
+  late String lastPurchasePrice;
 
   AddProductBody(
       {required this.productName,
@@ -14,7 +17,10 @@ class AddProductBody {
       required this.code,
       required this.categoryId,
       required this.unitId,
-      required this.description});
+      required this.description,
+      required this.openingQuantity,
+      required this.alertQuantity,
+      required this.lastPurchasePrice});
 
   AddProductBody.fromJson(Map<String, dynamic> json) {
     productName = json['name']?.toString() ?? '';
@@ -24,6 +30,9 @@ class AddProductBody {
     categoryId = json['category_id']?.toString() ?? '';
     unitId = json['unit_id']?.toString() ?? '';
     description = json['description']?.toString() ?? '';
+    openingQuantity = json['opening_quantity']?.toString() ?? '0';
+    alertQuantity = json['alert_quantity']?.toString() ?? '0';
+    lastPurchasePrice = json['last_purchase_price']?.toString() ?? '';
   }
 
   Map<String, dynamic> toJson() {
@@ -35,6 +44,9 @@ class AddProductBody {
     data['category_id'] = categoryId;
     data['unit_id'] = unitId;
     data['description'] = description;
+    data['opening_quantity'] = openingQuantity;
+    data['alert_quantity'] = alertQuantity;
+    data['last_purchase_price'] = lastPurchasePrice;
     return data;
   }
 }

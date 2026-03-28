@@ -26,6 +26,9 @@ class AddProductScreen extends StatelessWidget {
   final _priceController = TextEditingController();
   final _skuController = TextEditingController();
   final _descriptionController = TextEditingController();
+  final _openingQuantityController = TextEditingController(text: '0');
+  final _alertQuantityController = TextEditingController(text: '0');
+  final _lastPurchasePriceController = TextEditingController();
 
   final _productNameFocusNode = FocusNode();
   final _priceFocusNode = FocusNode();
@@ -63,6 +66,21 @@ class AddProductScreen extends StatelessWidget {
                         .productDetailsModel!
                         .description ??
                     "";
+                _openingQuantityController.text = Get.find<ProductController>()
+                        .productDetailsModel!
+                        .openingQuantity
+                        ?.toString() ??
+                    '0';
+                _alertQuantityController.text = Get.find<ProductController>()
+                        .productDetailsModel!
+                        .alertQuantity
+                        ?.toString() ??
+                    '0';
+                _lastPurchasePriceController.text = Get.find<ProductController>()
+                        .productDetailsModel!
+                        .lastPurchasePrice
+                        ?.toString() ??
+                    '';
               }
             },
           );
@@ -221,6 +239,64 @@ class AddProductScreen extends StatelessWidget {
                                       ),
 
                                       // Free space
+                                      const SizedBox(
+                                        height: Dimensions.PADDING_SIZE_DEFAULT,
+                                      ),
+
+                                      IntrinsicHeight(
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            Expanded(
+                                              child: CustomTextField(
+                                                hintText:
+                                                    "opening_quantity_key".tr,
+                                                header:
+                                                    "opening_quantity_key".tr,
+                                                controller:
+                                                    _openingQuantityController,
+                                                inputType:
+                                                    const TextInputType.numberWithOptions(decimal: true),
+                                                isOnlyNumber: true,
+                                                fillColor: Theme.of(context)
+                                                    .cardColor,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                                width: Dimensions
+                                                    .PADDING_SIZE_DEFAULT),
+                                            Expanded(
+                                              child: CustomTextField(
+                                                hintText: "alert_quantity_key".tr,
+                                                header: "alert_quantity_key".tr,
+                                                controller:
+                                                    _alertQuantityController,
+                                                inputType:
+                                                    const TextInputType.numberWithOptions(decimal: true),
+                                                isOnlyNumber: true,
+                                                fillColor: Theme.of(context)
+                                                    .cardColor,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+
+                                      const SizedBox(
+                                        height: Dimensions.PADDING_SIZE_DEFAULT,
+                                      ),
+
+                                      CustomTextField(
+                                        hintText: 'last_purchase_price_key'.tr,
+                                        header: 'last_purchase_price_key'.tr,
+                                        controller: _lastPurchasePriceController,
+                                        inputType:
+                                            const TextInputType.numberWithOptions(decimal: true),
+                                        isOnlyNumber: true,
+                                        fillColor: Theme.of(context).cardColor,
+                                      ),
+
                                       const SizedBox(
                                         height: Dimensions.PADDING_SIZE_DEFAULT,
                                       ),
@@ -386,6 +462,18 @@ class AddProductScreen extends StatelessWidget {
                                                               "",
                                                           description:
                                                               _descriptionController
+                                                                  .text
+                                                                  .trim(),
+                                                          openingQuantity:
+                                                              _openingQuantityController
+                                                                  .text
+                                                                  .trim(),
+                                                          alertQuantity:
+                                                              _alertQuantityController
+                                                                  .text
+                                                                  .trim(),
+                                                          lastPurchasePrice:
+                                                              _lastPurchasePriceController
                                                                   .text
                                                                   .trim());
 

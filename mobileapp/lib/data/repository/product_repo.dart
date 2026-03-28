@@ -17,12 +17,13 @@ class ProductRepo {
       {String? url,
       required bool fromFilter,
       String? category,
-      String? unit}) async {
+      String? unit,
+      String? lowStock}) async {
     return await apiClient.getData(
         fromFilter
             ? url != null
-                ? "$url&category=$category&unit=$unit"
-                : "${AppConstants.GET_PRODUCTS_URI}?category=$category&unit=$unit"
+                ? "$url&category=$category&unit=$unit&low_stock=$lowStock"
+                : "${AppConstants.GET_PRODUCTS_URI}?category=$category&unit=$unit&low_stock=$lowStock"
             : url ?? AppConstants.GET_PRODUCTS_URI,
         isPaginate: url != null ? true : false);
   }

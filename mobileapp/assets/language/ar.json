@@ -358,5 +358,9 @@
   "sku_key": "SKU",
   "generate_key": "توليد",
   "scan_barcode_key": "مسح الباركود",
-  "enter_the_sku_key": "ادخل SKU"
+  "enter_the_sku_key": "ادخل SKU",
+  "opening_quantity_key": "كمية البداية",
+  "alert_quantity_key": "كمية التنبيه",
+  "last_purchase_price_key": "آخر سعر شراء",
+  "low_stock_products_key": "المنتجات منخفضة المخزون"
 }

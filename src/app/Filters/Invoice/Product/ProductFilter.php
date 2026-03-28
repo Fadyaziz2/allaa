@@ -32,4 +32,11 @@ class ProductFilter extends BaseFilter
 
         $this->builder->when($ids, fn(Builder $query) => $query->whereHas('brand', fn(Builder $query) => $query->whereIn('brand_id', $brand)));
     }
+
+    public function low_stock($value = null): void
+    {
+        $this->builder->when((string)$value === '1', function (Builder $query) {
+            $query->whereColumn('current_quantity', '<=', 'alert_quantity');
+        });
+    }
 }

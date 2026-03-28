@@ -44,6 +44,9 @@ class ProductExportService extends BaseService
         return [
             'Name',
             'Price',
+            'Current quantity',
+            'Alert quantity',
+            'Last purchase price',
             'Code',
             'Category name',
             'Unit name',
@@ -56,6 +59,9 @@ class ProductExportService extends BaseService
         return fn($product) => [
             'name' => $product->name,
             'price' => $product->price,
+            'current_quantity' => $product->current_quantity,
+            'alert_quantity' => $product->alert_quantity,
+            'last_purchase_price' => $product->last_purchase_price,
             'code' => $product->code,
             'category_id' => $product->category ? $product->category->name : '',
             'unit_id' => $product->unit ? $product->unit->name : '',

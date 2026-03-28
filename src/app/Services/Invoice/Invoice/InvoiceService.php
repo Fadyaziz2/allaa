@@ -6,10 +6,12 @@ use App\Jobs\Invoice\Invoice\InvoiceAttachmentJob;
 use App\Mail\Invoice\Invoice\InvoiceRecurringMail;
 use App\Models\Invoice\Invoice\Invoice;
 use App\Models\Invoice\Invoice\InvoiceDetail;
+use App\Models\Invoice\Product\Product;
 use App\Models\Invoice\Transaction\Transaction;
 use App\Repositories\Core\StatusRepository;
 use App\Services\Invoice\AppService;
 use App\Services\Invoice\Customization\CustomizationService;
+use App\Services\Invoice\Product\ProductStockService;
 use App\Services\Invoice\Traits\TaxTrait;
 use App\Services\Traits\HasWhen;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -20,7 +22,7 @@ class InvoiceService extends AppService
 {
     use HasWhen, TaxTrait;
 
-    public function __construct(Invoice $model)
+    public function __construct(Invoice $model, protected ProductStockService $productStockService)
     {
         $this->model = $model;
     }
@@ -28,7 +30,22 @@ class InvoiceService extends AppService
     public function removeProduct($invoice): static
     {
         if (count(request()->get('remove_product'))) {
-            $invoice->invoiceDetails()->whereIn('id', request()->get('remove_product'))->delete();
+            $invoice->invoiceDetails()
+                ->whereIn('id', request()->get('remove_product'))
+                ->get()
+                ->each(function (InvoiceDetail $detail) {
+                    if ($detail->product) {
+                        $this->productStockService->adjustStock(
+                            $detail->product,
+                            (float)$detail->quantity,
+                            'sale_reversal',
+                            Invoice::class,
+                            $detail->invoice_id,
+                            'Invoice product removed'
+                        );
+                    }
+                    $detail->delete();
+                });
         }
         return $this;
     }
@@ -46,19 +63,79 @@ class InvoiceService extends AppService
         foreach (request('products') as $product) {
 
             if (isset($product['id'])) {
-                InvoiceDetail::query()
-                    ->where('id', $product['id'])
-                    ->update([
-                        'quantity' => $product['quantity'],
-                        'price' => $product['price'],
-                        'product_id' => $product['product_id'],
-                    ]);
+                $invoiceDetail = InvoiceDetail::query()->find($product['id']);
+                if (!$invoiceDetail) {
+                    continue;
+                }
+
+                $oldQuantity = (float)$invoiceDetail->quantity;
+                $oldProductId = (int)$invoiceDetail->product_id;
+                $newQuantity = (float)$product['quantity'];
+                $newProductId = (int)$product['product_id'];
+
+                if ($oldProductId !== $newProductId) {
+                    $oldProduct = Product::query()->find($oldProductId);
+                    $newProduct = Product::query()->find($newProductId);
+
+                    if ($oldProduct) {
+                        $this->productStockService->adjustStock(
+                            $oldProduct,
+                            $oldQuantity,
+                            'sale_reversal',
+                            Invoice::class,
+                            $this->model->id,
+                            'Invoice product changed'
+                        );
+                    }
+                    if ($newProduct) {
+                        $this->productStockService->adjustStock(
+                            $newProduct,
+                            -1 * $newQuantity,
+                            'sale',
+                            Invoice::class,
+                            $this->model->id,
+                            'Invoice product changed'
+                        );
+                    }
+                } else {
+                    $quantityDelta = $newQuantity - $oldQuantity;
+                    if ($quantityDelta != 0) {
+                        $currentProduct = Product::query()->find($newProductId);
+                        if ($currentProduct) {
+                            $this->productStockService->adjustStock(
+                                $currentProduct,
+                                -1 * $quantityDelta,
+                                $quantityDelta > 0 ? 'sale' : 'sale_reversal',
+                                Invoice::class,
+                                $this->model->id,
+                                'Invoice quantity updated'
+                            );
+                        }
+                    }
+                }
+
+                $invoiceDetail->update([
+                    'quantity' => $newQuantity,
+                    'price' => $product['price'],
+                    'product_id' => $newProductId,
+                ]);
             } else {
                 $this->model->invoiceDetails()->create([
                     'quantity' => $product['quantity'],
                     'price' => $product['price'],
                     'product_id' => $product['product_id'],
                 ]);
+                $productModel = Product::query()->find($product['product_id']);
+                if ($productModel) {
+                    $this->productStockService->adjustStock(
+                        $productModel,
+                        -1 * (float)$product['quantity'],
+                        'sale',
+                        Invoice::class,
+                        $this->model->id,
+                        'Invoice created'
+                    );
+                }
             }
         }
         return $this;
@@ -71,7 +148,19 @@ class InvoiceService extends AppService
 
     public function deleteInvoiceDetails(): InvoiceService
     {
-        $this->model->invoiceDetails()->delete();
+        $this->model->invoiceDetails->each(function (InvoiceDetail $detail) {
+            if ($detail->product) {
+                $this->productStockService->adjustStock(
+                    $detail->product,
+                    (float)$detail->quantity,
+                    'sale_reversal',
+                    Invoice::class,
+                    $detail->invoice_id,
+                    'Invoice deleted'
+                );
+            }
+            $detail->delete();
+        });
 
         return $this;
     }
