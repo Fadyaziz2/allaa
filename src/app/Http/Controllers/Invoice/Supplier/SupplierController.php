@@ -2,18 +2,12 @@
 
 namespace App\Http\Controllers\Invoice\Supplier;
 
-use App\Filters\Invoice\Customer\CustomerFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Invoice\Supplier\SupplierRequest;
 use App\Models\Invoice\Supplier\Supplier;
 
 class SupplierController extends Controller
 {
-    public function __construct(CustomerFilter $filter)
-    {
-        $this->filter = $filter;
-    }
-
     public function index()
     {
         return Supplier::query()
