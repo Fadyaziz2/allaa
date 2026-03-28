@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
@@ -14,6 +15,17 @@ class SkuScannerScreen extends StatefulWidget {
 class _SkuScannerScreenState extends State<SkuScannerScreen> {
   bool _scanned = false;
 
+  bool get _isScannerSupported {
+    if (kIsWeb) return true;
+
+    return switch (defaultTargetPlatform) {
+      TargetPlatform.android ||
+      TargetPlatform.iOS ||
+      TargetPlatform.macOS => true,
+      _ => false,
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,21 +33,31 @@ class _SkuScannerScreenState extends State<SkuScannerScreen> {
         title: 'scan_barcode_key'.tr,
         isBackButtonExist: true,
       ),
-      body: MobileScanner(
-        onDetect: (capture) {
-          if (_scanned) {
-            return;
-          }
+      body: _isScannerSupported
+          ? MobileScanner(
+              onDetect: (capture) {
+                if (_scanned) {
+                  return;
+                }
 
-          final code = capture.barcodes.first.rawValue;
-          if (code == null || code.isEmpty) {
-            return;
-          }
+                final code = capture.barcodes.first.rawValue;
+                if (code == null || code.isEmpty) {
+                  return;
+                }
 
-          _scanned = true;
-          Get.back(result: code);
-        },
-      ),
+                _scanned = true;
+                Get.back(result: code);
+              },
+            )
+          : const Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Text(
+                  'Barcode scanner is not supported on this platform.',
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
     );
   }
 }
