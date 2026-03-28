@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mobile\Api\Category;
 use App\Filters\Invoice\Common\NameFilter;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Mobile\Category\CategoryResourceCollection;
+use App\Models\Invoice\Expense\Expense;
 use App\Models\Invoice\Category\Category;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,9 @@ class CategoryController extends Controller
         $categories = Category::query()
             ->filter($this->filter)
             ->whereType('expense')
-            ->select('id', 'name')
+            ->withCount('products as total_products')
+            ->withCount('expenses as total_expenses')
+            ->select('id', 'name', 'type')
             ->orderByDesc('id')
             ->paginate(request('per_page', 10));
 
@@ -58,7 +61,10 @@ class CategoryController extends Controller
         }
         return success_response('Data fetched successfully', [
             'id' => $category->id,
-            'name' => $category->name
+            'name' => $category->name,
+            'type' => $category->type,
+            'total_products' => $category->products()->count(),
+            'total_expenses' => Expense::query()->where('category_id', $category->id)->count(),
         ]);
     }
 
@@ -83,6 +89,14 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category): \Illuminate\Http\JsonResponse
     {
+        if ($category->type === 'category' && $category->products()->exists()) {
+            return error_response('Cannot delete category because it is used in products', 422);
+        }
+
+        if ($category->type === 'expense' && Expense::query()->where('category_id', $category->id)->exists()) {
+            return error_response('Cannot delete category because it is used in expenses', 422);
+        }
+
         $category->delete();
         return success_response('Data deleted successfully');
     }

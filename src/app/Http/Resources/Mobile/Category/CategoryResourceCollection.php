@@ -18,6 +18,11 @@ class CategoryResourceCollection extends ResourceCollection
             'data' => $this->collection->map(fn($data) => [
                 'id' => $data->id,
                 'name' => $data->name,
+                'type' => $data->type,
+                'total_products' => $data->total_products ?? 0,
+                'total_expenses' => $data->total_expenses ?? 0,
+                'can_edit' => true,
+                'can_delete' => (($data->total_products ?? 0) === 0) && (($data->total_expenses ?? 0) === 0),
             ]),
 
             'pagination' => [

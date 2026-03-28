@@ -20,7 +20,8 @@ class UnitController extends Controller
     {
         $units = Unit::query()
             ->filter($this->filter)
-            ->select('id', 'name')
+            ->withCount('products as total_products')
+            ->select('id', 'name', 'short_name')
             ->orderByDesc('id')
             ->paginate(request('per_page', 20));
 
@@ -51,6 +52,8 @@ class UnitController extends Controller
         return success_response('Data fetched successfully', [
             'id' => $unit->id,
             'name' => $unit->name,
+            'short_name' => $unit->short_name,
+            'total_products' => $unit->products()->count(),
         ]);
     }
 
@@ -70,6 +73,10 @@ class UnitController extends Controller
 
     public function destroy(Unit $unit): JsonResponse
     {
+        if ($unit->products()->exists()) {
+            return error_response('Cannot delete unit because it is used in products', 422);
+        }
+
         $unit->delete();
 
         return success_response('Data deleted successfully');

@@ -17,7 +17,11 @@ class UnitResourceCollection extends ResourceCollection
         return [
             'data' => $this->collection->map(fn($data) => [
                 'id' => $data->id,
-                'name' => $data->name
+                'name' => $data->name,
+                'short_name' => $data->short_name,
+                'total_products' => $data->total_products ?? 0,
+                'can_edit' => true,
+                'can_delete' => ($data->total_products ?? 0) === 0,
             ]),
 
             'pagination' => [
