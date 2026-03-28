@@ -76,22 +76,35 @@ class _CustomTextFieldState extends State<CustomTextField> {
         widget.header != null
             ? Row(
                 children: [
-                  Text(
-                    widget.header!,
-                    style:  poppinsRegular.copyWith(
-                      color: widget.headerColor?? Theme.of(context).textTheme.bodyMedium!.color,
-                      fontSize: Dimensions.FONT_SIZE_DEFAULT,
+                  Expanded(
+                    child: Text.rich(
+                      TextSpan(
+                        text: widget.header!,
+                        style: poppinsRegular.copyWith(
+                          color: widget.headerColor ??
+                              Theme.of(context).textTheme.bodyMedium!.color,
+                          fontSize: Dimensions.FONT_SIZE_DEFAULT,
+                        ),
+                        children: widget.isRequired
+                            ? [
+                                TextSpan(
+                                  text: ' *',
+                                  style: poppinsRegular.copyWith(
+                                    color: Theme.of(context).colorScheme.error,
+                                    fontSize: Dimensions.FONT_SIZE_LARGE,
+                                  ),
+                                ),
+                              ]
+                            : null,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  if (widget.isRequired)
-                    Text(
-                      " *",
-                      style: poppinsRegular.copyWith(
-                          color: Theme.of(context).colorScheme.error,
-                          fontSize: Dimensions.FONT_SIZE_LARGE),
-                    ),
-                  const Spacer(),
-                  widget.headerRightElement ?? const SizedBox(),
+                  if (widget.headerRightElement != null) ...[
+                    const SizedBox(width: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                    widget.headerRightElement!,
+                  ],
                 ],
               )
             : const SizedBox(),
