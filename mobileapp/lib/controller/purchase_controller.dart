@@ -98,9 +98,21 @@ class PurchaseController extends GetxController implements GetxService {
     _suppliersLoading = true;
     update();
     final response = await purchaseRepo.getSuppliers(search: search);
-    if (response.statusCode == 200 && response.body['status'] == true) {
+    if (response.statusCode == 200) {
       _suppliers = [];
-      for (final item in response.body['result']['data']) {
+      final dynamic body = response.body;
+      final List<dynamic> list = body is Map<String, dynamic> && body['result'] is Map<String, dynamic> && body['result']['data'] is List
+          ? (body['result']['data'] as List<dynamic>)
+          : (body is Map<String, dynamic> && body['data'] is List)
+              ? (body['data'] as List<dynamic>)
+              : (body is Map<String, dynamic> && body['result'] is List)
+                  ? (body['result'] as List<dynamic>)
+                  : (body is List)
+                      ? body
+                      : <dynamic>[];
+
+      for (final item in list) {
+        if (item is! Map<String, dynamic>) continue;
         _suppliers.add(SupplierModel.fromJson(item));
       }
     } else {
