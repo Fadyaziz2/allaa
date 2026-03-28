@@ -213,6 +213,12 @@ return array_merge([
     'email_setup_is_not_correct' => "Email setup is incorrect!",
     'email_send_has_been_successfully' => 'Email send has been successfully',
     'purchase_code' => 'Purchase code',
+    'supplier' => 'Supplier',
+    'suppliers' => 'Suppliers',
+    'purchase_invoice' => 'Purchase invoice',
+    'purchase_invoices' => 'Purchase invoices',
+    'due_amount' => 'Due amount',
+
     'database_credential_error' => 'Database credentials are incorrect',
     'dashboard' => 'Dashboard',
     'app_setting' => 'App setting',

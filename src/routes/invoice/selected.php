@@ -17,6 +17,7 @@ Route::group(['prefix' => 'invoice/selected', 'middleware' => ['auth', 'authoriz
     $router->get('customers', [SelectedController::class, 'customer']);
 
     $router->get('products', [SelectedController::class, 'product']);
+    $router->get('suppliers', [SelectedController::class, 'suppliers']);
 
     $router->get('status', [SelectedController::class, 'status']);
 

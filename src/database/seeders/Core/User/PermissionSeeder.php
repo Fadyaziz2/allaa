@@ -250,6 +250,47 @@ class PermissionSeeder extends Seeder
                 'group_name' => 'expenses',
             ],
 
+
+            // Suppliers Module
+            [
+                'name' => 'view_suppliers',
+                'group_name' => 'suppliers',
+            ],
+            [
+                'name' => 'create_suppliers',
+                'group_name' => 'suppliers',
+            ],
+            [
+                'name' => 'update_suppliers',
+                'group_name' => 'suppliers',
+            ],
+            [
+                'name' => 'delete_suppliers',
+                'group_name' => 'suppliers',
+            ],
+
+            // Purchase Invoices Module
+            [
+                'name' => 'view_purchase_invoices',
+                'group_name' => 'purchase_invoices',
+            ],
+            [
+                'name' => 'create_purchase_invoices',
+                'group_name' => 'purchase_invoices',
+            ],
+            [
+                'name' => 'update_purchase_invoices',
+                'group_name' => 'purchase_invoices',
+            ],
+            [
+                'name' => 'delete_purchase_invoices',
+                'group_name' => 'purchase_invoices',
+            ],
+            [
+                'name' => 'pay_purchase_invoices',
+                'group_name' => 'purchase_invoices',
+            ],
+
             // Reports Module
 
             [

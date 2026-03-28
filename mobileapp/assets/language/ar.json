@@ -362,5 +362,19 @@
   "opening_quantity_key": "كمية البداية",
   "alert_quantity_key": "كمية التنبيه",
   "last_purchase_price_key": "آخر سعر شراء",
-  "low_stock_products_key": "المنتجات منخفضة المخزون"
+  "low_stock_products_key": "المنتجات منخفضة المخزون",
+  "purchases_key": "المشتريات",
+  "suppliers_key": "الموردين",
+  "supplier_key": "المورد",
+  "add_supplier_key": "إضافة مورد",
+  "update_supplier_key": "تعديل مورد",
+  "purchase_invoices_key": "فواتير المشتريات",
+  "add_purchase_invoice_key": "إضافة فاتورة مشتريات",
+  "update_purchase_invoice_key": "تعديل فاتورة مشتريات",
+  "contact_person_key": "مسؤول التواصل",
+  "filter_by_supplier_key": "تصفية بالمورد",
+  "pay_due_key": "دفع المتبقي",
+  "please_select_supplier_key": "برجاء اختيار المورد",
+  "please_add_item_key": "أضف صنف واحد على الأقل",
+  "invalid_items_key": "بيانات الأصناف غير صحيحة"
 }
