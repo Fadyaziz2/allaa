@@ -66,7 +66,7 @@ class CustomerController extends GetxController implements GetxService {
   List<CustomerInvoiceDetilesModel> get customerInvoiceList =>
       _customerInvoiceList;
 
-  String _countryCodeNumber = '+1';
+  String _countryCodeNumber = '+20';
   String get countryCodeNumber => _countryCodeNumber;
 
   CustomerDetailsModel? _customerDetailsModel;
@@ -111,7 +111,7 @@ class CustomerController extends GetxController implements GetxService {
   bool get customerFilter => _customerFilter;
 
   // customer country code
-  Country _customerCountry = CountryParser.parseCountryCode("US");
+  Country _customerCountry = CountryParser.parseCountryCode("EG");
   Country get customerCountry => _customerCountry;
 
   void toggleAllowPortalAccess() {
@@ -282,7 +282,7 @@ class CustomerController extends GetxController implements GetxService {
 
   // refresh data
   void refreshData() {
-    _countryCodeNumber = '+1';
+    _countryCodeNumber = '+20';
     _allowPortalAccess = false;
     update();
   }
