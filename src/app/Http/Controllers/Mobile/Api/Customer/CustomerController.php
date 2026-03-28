@@ -15,6 +15,7 @@ use App\Services\Invoice\Customer\CustomerService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class CustomerController extends Controller
 {
@@ -49,7 +50,7 @@ class CustomerController extends Controller
         $request->validate([
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:30',
-            'email' => 'required|email|max:150|unique:users,email',
+            'email' => 'nullable|email|max:150|unique:users,email',
             'phone_number' => 'nullable|max:50',
             'phone_country' => 'nullable|max:50',
             'portal_access' => 'nullable|boolean',
@@ -65,9 +66,11 @@ class CustomerController extends Controller
         try {
 
             DB::transaction(function () use ($request) {
+                $email = $this->resolveCustomerEmail($request->input('email'));
                 $customer = $this->service
                     ->setAttributes($request->all())
-                    ->save(array_merge($request->only('first_name', 'last_name', 'email'),
+                    ->save(array_merge($request->only('first_name', 'last_name'),
+                        ['email' => $email],
                         ['status_id' => resolve(StatusRepository::class)->userActive()]));
 
                 $this->service
@@ -102,6 +105,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request, User $customer): \Illuminate\Foundation\Application|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory
     {
+        $email = $this->resolveCustomerEmail($request->input('email'));
         if ($request->has('portal_access') && $request->portal_access) {
             $checkEmailSetup = resolve(EmailDeliveryCheckController::class)->isExists();
             if (!$checkEmailSetup) {
@@ -112,7 +116,7 @@ class CustomerController extends Controller
         $request->validate([
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:30',
-            'email' => 'required|email|max:150|unique:users,email,' . $customer->id,
+            'email' => 'nullable|email|max:150|unique:users,email,' . $customer->id,
             'phone_number' => 'nullable|max:50',
             'phone_country' => 'nullable|max:50',
             'portal_access' => 'nullable|boolean',
@@ -120,10 +124,10 @@ class CustomerController extends Controller
 
         try {
 
-            DB::transaction(function () use ($request, $customer) {
+            DB::transaction(function () use ($request, $customer, $email) {
                 $this->service
                     ->setModel($customer)
-                    ->setAttributes($request->all())
+                    ->setAttributes(array_merge($request->all(), ['email' => $email]))
                     ->update()
                     ->mobileUserProfile($customer)
                     ->mobilePortalInvitation();
@@ -193,5 +197,14 @@ class CustomerController extends Controller
         ]);
 
         return success_response('Customer status updated successfully');
+    }
+
+    private function resolveCustomerEmail(?string $email): string
+    {
+        if (!blank($email)) {
+            return $email;
+        }
+
+        return 'customer-' . Str::uuid() . '@autogen.invoicex.app';
     }
 }

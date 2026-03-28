@@ -30,8 +30,6 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
 
   final _emailController = TextEditingController();
 
-  final _taxController = TextEditingController();
-
   final _phoneController = TextEditingController();
 
   final _customerFirstNameFocusNode = FocusNode();
@@ -41,8 +39,6 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
   final _emailFocusNode = FocusNode();
 
   final _phoneFocusNode = FocusNode();
-
-  final _taxFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +54,12 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
             _emailController.text =
                 customerController.customerUpdateDetailsModel!.email ?? "";
 
-            _taxController.text =
-                customerController.customerUpdateDetailsModel!.taxNo ?? "";
             customerController.setUpdatePortalAccess(
                 customerController.customerUpdateDetailsModel!.portalAccess ??
                     false);
             customerController.setCountryCode(
                 customerController.customerUpdateDetailsModel!.phoneCountry ??
-                    "US");
+                    "EG");
             _phoneController.text = customerController
                         .customerUpdateDetailsModel!.phoneNumber !=
                     null
@@ -73,11 +67,11 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                     customerController.customerUpdateDetailsModel!.phoneNumber!)
                 : "";
           } else {
-            customerController.setCountryCode("US");
+            customerController.setCountryCode("EG");
           }
         });
       } else {
-        customerController.setCountryCode("US");
+        customerController.setCountryCode("EG");
       }
     });
 
@@ -155,7 +149,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                               // Customer Email text field section
                               CustomTextField(
                                 header: 'email_key'.tr,
-                                isRequired: true,
+                                isRequired: false,
                                 hintText: 'customer_email_key'.tr,
                                 controller: _emailController,
                                 focusNode: _emailFocusNode,
@@ -179,25 +173,9 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                                 country: customerController.customerCountry,
                                 controller: _phoneController,
                                 focusNode: _phoneFocusNode,
-                                nextFocus: _taxFocusNode,
                                 prefixIconOnTap: () {
                                   customerController.showPicker(context);
                                 },
-                              ),
-
-                              const SizedBox(
-                                height: Dimensions.PADDING_SIZE_DEFAULT,
-                              ),
-
-                              // Customer Tax no text field section
-                              CustomTextField(
-                                header: 'tax_no_key'.tr,
-                                hintText: 'enter_tax_no_key'.tr,
-                                controller: _taxController,
-                                focusNode: _taxFocusNode,
-                                inputType: TextInputType.text,
-                                inputAction: TextInputAction.done,
-                                fillColor: Theme.of(context).cardColor,
                               ),
 
                               const SizedBox(
@@ -298,15 +276,6 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                                                     isError: true);
                                                 return;
                                               }
-                                              if (_emailController
-                                                  .text.isEmpty) {
-                                                showCustomSnackBar(
-                                                    'please_enter_customer_email_key'
-                                                        .tr,
-                                                    isError: true);
-                                                return;
-                                              }
-
                                               final customerBody = AddCustomerBody(
                                                   firstName: _customerFirstNameController.text.trim(),
                                                   lastName:
@@ -336,7 +305,6 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                                                           _phoneController.text
                                                               .trim()
                                                       : _phoneController.text.trim(),
-                                                  taxNo: _taxController.text.trim(),
                                                   portalAccess: customerController.allowPortalAccess ? '1' : '0');
 
                                               if (widget.isUpdate != '1') {

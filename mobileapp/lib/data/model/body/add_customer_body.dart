@@ -4,7 +4,6 @@ class AddCustomerBody {
   late String email;
   late String phoneCountry;
   late String phone;
-  late String taxNo;
   late String portalAccess;
 
   AddCustomerBody(
@@ -13,7 +12,6 @@ class AddCustomerBody {
       required this.email,
       required this.phoneCountry,
       required this.phone,
-      required this.taxNo,
       required this.portalAccess});
 
   AddCustomerBody.fromJson(Map<String, dynamic> json) {
@@ -22,7 +20,6 @@ class AddCustomerBody {
     email = json['email'];
     phoneCountry = json['phone_country'];
     phone = json['phone_number'];
-    taxNo = json['tax_no'];
     portalAccess = json['portal_access'];
   }
 
@@ -33,7 +30,6 @@ class AddCustomerBody {
     data['email'] = email;
     data['phone_country'] = phoneCountry;
     data['phone_number'] = phone;
-    data['tax_no'] = taxNo;
     data['portal_access'] = portalAccess;
     return data;
   }
