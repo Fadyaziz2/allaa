@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import '../data/api/api_checker.dart';
 import '../data/model/body/popup_model.dart';
 import '../data/model/response/product_model.dart';
+import '../data/model/response/categories_model.dart';
 import '../data/model/response/response_model.dart';
 import '../util/images.dart';
 import '../view/base/confirmation_dialog.dart';
@@ -53,6 +54,36 @@ class ProductController extends GetxController implements GetxService {
 
   bool _addProductLoading = false;
   bool get addProductLoading => _addProductLoading;
+
+  List<CategoriesModel> _productCategoryList = [];
+  List<CategoriesModel> get productCategoryList => _productCategoryList;
+
+  bool _productCategoryListLoading = false;
+  bool get productCategoryListLoading => _productCategoryListLoading;
+
+  bool _productCategoryPaginateLoading = false;
+  bool get productCategoryPaginateLoading => _productCategoryPaginateLoading;
+
+  bool _addProductCategoryLoading = false;
+  bool get addProductCategoryLoading => _addProductCategoryLoading;
+
+  String? _productCategoryNextPageUrl;
+  String? get productCategoryNextPageUrl => _productCategoryNextPageUrl;
+
+  List<UnitModel> _unitsManagementList = [];
+  List<UnitModel> get unitsManagementList => _unitsManagementList;
+
+  bool _unitsManagementLoading = false;
+  bool get unitsManagementLoading => _unitsManagementLoading;
+
+  bool _unitsManagementPaginateLoading = false;
+  bool get unitsManagementPaginateLoading => _unitsManagementPaginateLoading;
+
+  bool _addUnitLoading = false;
+  bool get addUnitLoading => _addUnitLoading;
+
+  String? _unitsManagementNextPageUrl;
+  String? get unitsManagementNextPageUrl => _unitsManagementNextPageUrl;
 
   bool _isProductUpdateLoading = false;
   bool get isProductUpdateLoading => _isProductUpdateLoading;
@@ -292,6 +323,109 @@ class ProductController extends GetxController implements GetxService {
       ApiChecker.checkApi(response);
     }
     _isProductUpdateLoading = false;
+    update();
+    return responseModel;
+  }
+
+
+
+  Future<void> getProductCategoryList({bool isPaginate = false}) async {
+    if (isPaginate) {
+      _productCategoryPaginateLoading = true;
+    } else {
+      _productCategoryListLoading = true;
+      _productCategoryList = [];
+      _productCategoryNextPageUrl = null;
+    }
+    update();
+
+    final response = await productRepo.getProductCategories(
+      url: _productCategoryNextPageUrl,
+    );
+    if (response.statusCode == 200 && response.body['status'] == true) {
+      response.body['result']['data'].forEach((item) {
+        _productCategoryList.add(CategoriesModel.fromJson(item));
+      });
+      _productCategoryNextPageUrl =
+          response.body['result']['pagination']['next_page_url'];
+    } else {
+      ApiChecker.checkApi(response);
+    }
+
+    if (isPaginate) {
+      _productCategoryPaginateLoading = false;
+    } else {
+      _productCategoryListLoading = false;
+    }
+    update();
+  }
+
+  Future<ResponseModel> addProductCategory({required String name}) async {
+    _addProductCategoryLoading = true;
+    update();
+
+    final response = await productRepo.addProductCategory(name: name);
+    ResponseModel responseModel;
+    if (response.statusCode == 200 && response.body['status'] == true) {
+      await getProductCategoryList();
+      responseModel = ResponseModel(true, response.body['message']);
+    } else {
+      ApiChecker.checkApi(response);
+      responseModel = ResponseModel(false, response.body['message']);
+    }
+
+    _addProductCategoryLoading = false;
+    update();
+    return responseModel;
+  }
+
+  Future<void> getUnitsManagementList({bool isPaginate = false}) async {
+    if (isPaginate) {
+      _unitsManagementPaginateLoading = true;
+    } else {
+      _unitsManagementLoading = true;
+      _unitsManagementList = [];
+      _unitsManagementNextPageUrl = null;
+    }
+    update();
+
+    final response = await productRepo.getUnitsList(
+      url: _unitsManagementNextPageUrl,
+    );
+    if (response.statusCode == 200 && response.body['status'] == true) {
+      response.body['result']['data'].forEach((item) {
+        _unitsManagementList.add(UnitModel.fromJson(item));
+      });
+      _unitsManagementNextPageUrl =
+          response.body['result']['pagination']['next_page_url'];
+    } else {
+      ApiChecker.checkApi(response);
+    }
+
+    if (isPaginate) {
+      _unitsManagementPaginateLoading = false;
+    } else {
+      _unitsManagementLoading = false;
+    }
+    update();
+  }
+
+  Future<ResponseModel> addUnit({required String name}) async {
+    _addUnitLoading = true;
+    update();
+
+    final response = await productRepo.addUnit(name: name);
+    ResponseModel responseModel;
+    if (response.statusCode == 200 && response.body['status'] == true) {
+      await getUnitsManagementList();
+      await getUnits();
+      responseModel = ResponseModel(true, response.body['message']);
+    } else {
+      ApiChecker.checkApi(response);
+      responseModel = ResponseModel(false, response.body['message']);
+    }
+
+    _addUnitLoading = false;
     update();
     return responseModel;
   }

@@ -348,5 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "Czy na pewno chcesz pobrać ten paragon termiczny?",
   "you_want_to_download_this_thermal_quotation": "Czy na pewno chcesz pobrać tę termiczną wycenę?",
   "thermal_quotation_key": "Termiczna wycena",
-  "thermal_invoice_key": "Paragon termiczny"
+  "thermal_invoice_key": "Paragon termiczny",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

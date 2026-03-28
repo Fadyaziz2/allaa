@@ -348,5 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "Adakah anda pasti mahu memuat turun invois terma ini?",
   "you_want_to_download_this_thermal_quotation": "Adakah anda pasti mahu memuat turun sebut harga terma ini?",
   "thermal_quotation_key": "Sebutharga Terma",
-  "thermal_invoice_key": "Invois Terma"
+  "thermal_invoice_key": "Invois Terma",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

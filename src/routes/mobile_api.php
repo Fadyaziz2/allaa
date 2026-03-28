@@ -22,12 +22,14 @@ use App\Http\Controllers\Mobile\Api\Note\NoteController;
 use App\Http\Controllers\Mobile\Api\Notification\NotificationController;
 use App\Http\Controllers\Mobile\Api\PaymentMethod\PaymentMethodController;
 use App\Http\Controllers\Mobile\Api\Product\ProductController;
+use App\Http\Controllers\Mobile\Api\ProductCategory\ProductCategoryController;
 use App\Http\Controllers\Mobile\Api\Customer\CustomerController;
 use App\Http\Controllers\Mobile\Api\Profile\ProfileController;
 use App\Http\Controllers\Mobile\Api\Selected\SelectedController;
 use App\Http\Controllers\Mobile\Api\Setting\ApiSettingController;
 use App\Http\Controllers\Mobile\Api\Tax\TaxController;
 use App\Http\Controllers\Mobile\Api\Transaction\TransactionController;
+use App\Http\Controllers\Mobile\Api\Unit\UnitController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
@@ -113,6 +115,8 @@ Route::prefix('mobile')->middleware('admin')->group(callback: function (Router $
     $router->apiResource('products', ProductController::class);
 
     $router->apiResource('categories', CategoryController::class);
+    $router->apiResource('product-categories', ProductCategoryController::class);
+    $router->apiResource('units', UnitController::class);
 
     $router->apiResource('expenses', ExpenseController::class);
 

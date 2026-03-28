@@ -348,5 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "ඔබට මෙම තාප ඉන්වොයිසිය බාගත කිරීමට අවශ්‍ය බව විශ්වාසද?",
   "you_want_to_download_this_thermal_quotation": "ඔබට මෙම තාප උපුටා දැක්වීම බාගත කිරීමට අවශ්‍ය බව විශ්වාසද?",
   "thermal_quotation_key": "තාප උපුටා දැක්වීම",
-  "thermal_invoice_key": "තාප ඉන්වොයිසිය"
+  "thermal_invoice_key": "තාප ඉන්වොයිසිය",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

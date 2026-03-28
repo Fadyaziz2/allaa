@@ -348,5 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "Una hakika unataka kupakua ankara hii ya joto?",
   "you_want_to_download_this_thermal_quotation": "Una hakika unataka kupakua nukuu hii ya joto?",
   "thermal_quotation_key": "Nukuu ya Joto",
-  "thermal_invoice_key": "Ankara ya Joto"
+  "thermal_invoice_key": "Ankara ya Joto",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

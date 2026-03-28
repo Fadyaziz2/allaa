@@ -32,6 +32,38 @@ class ProductRepo {
     return await apiClient.getData(AppConstants.GET_UNITS_URI);
   }
 
+  Future<Response> getUnitsList({String? url, String? searchKey}) async {
+    return await apiClient.getData(
+      url != null
+          ? "$url&per_page=20&search=${searchKey ?? ''}"
+          : "${AppConstants.GET_UNITS_LIST_URI}?page=1&per_page=20&search=${searchKey ?? ''}",
+      isPaginate: url != null,
+    );
+  }
+
+  Future<Response> addUnit({required String name}) async {
+    return await apiClient.postData(
+      AppConstants.ADD_UNITS_URI,
+      {'name': name, 'short_name': name},
+    );
+  }
+
+  Future<Response> getProductCategories({String? url, String? searchKey}) async {
+    return await apiClient.getData(
+      url != null
+          ? "$url&per_page=20&search=${searchKey ?? ''}"
+          : "${AppConstants.GET_PRODUCT_CATEGORIES_URI}?page=1&per_page=20&search=${searchKey ?? ''}",
+      isPaginate: url != null,
+    );
+  }
+
+  Future<Response> addProductCategory({required String name}) async {
+    return await apiClient.postData(
+      AppConstants.ADD_PRODUCT_CATEGORIES_URI,
+      {'name': name},
+    );
+  }
+
   // Add Product
   Future<Response> addProduct({required AddProductBody addProductBody}) async {
     return await apiClient.postData(

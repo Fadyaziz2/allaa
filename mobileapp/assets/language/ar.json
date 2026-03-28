@@ -348,6 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "هل أنت متأكد من رغبتك في تنزيل هذه الفاتورة الحرارية؟",
   "you_want_to_download_this_thermal_quotation": "هل أنت متأكد من رغبتك في تنزيل هذا العرض الحراري؟",
   "thermal_quotation_key": "عرض حراري",
-  "thermal_invoice_key": "فاتورة حرارية"
+  "thermal_invoice_key": "فاتورة حرارية",
+  "units_key": "الوحدات",
+  "product_categories_key": "تصنيفات المنتجات",
+  "add_unit_key": "إضافة وحدة",
+  "write_unit_name_here_key": "اكتب اسم الوحدة هنا.",
+  "please_enter_the_unit_name_key": "من فضلك أدخل اسم الوحدة",
+  "add_product_category_key": "إضافة تصنيف منتج"
 }
-

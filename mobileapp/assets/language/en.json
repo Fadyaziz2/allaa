@@ -135,7 +135,6 @@
   "download_estimate_key": "Download quotation",
   "are_you_sure_yoy_want_to_delete_key": "Are you sure you want to delete?",
   "estimate_to_invoice_convert_key": "Quotation to invoice convert",
-
   "estimate_re_send_to_customer_mail_key": "Quotation re-send to customer mail",
   "this_content_will_be_deleted_permanently_key": "This content will be deleted permanently",
   "are_you_sure_key": "Are you sure ?",
@@ -184,7 +183,6 @@
   "message_key": "Message",
   "Max_file_size_is_2_MB_key": "Max file size is 2 MB",
   "add_payment_method_key": "Add payment method",
-
   "choose_a_payment_method_key": "Choose a payment method",
   "taxes_rate_key": "Tax rate (%)",
   "add_tax_key": "Add Tax",
@@ -249,7 +247,6 @@
   "please_enter_the_note_key": "Please enter the note",
   "issue_key": "Issue",
   "please_enter_your_title_key": "Please enter your title",
-
   "please_enter_your_amount_key": "Please enter your amount",
   "please_select_expenses_date_key": "Please select expenses date",
   "please_select_category_key": "Please select a category",
@@ -351,5 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "Are you sure want to download this thermal invoice",
   "you_want_to_download_this_thermal_quotation": "Are you sure want to download this thermal quotation",
   "thermal_quotation_key": "Thermal quotation",
-  "thermal_invoice_key": "Thermal invoice"
+  "thermal_invoice_key": "Thermal invoice",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

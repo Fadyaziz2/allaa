@@ -135,6 +135,11 @@ class AppConstants {
   static const String GET_PRODUCT_DETAILS_URI = '/products/';
   static const String UPDATE_PRODUCT_URI = '/products/';
 
+  static const String GET_PRODUCT_CATEGORIES_URI = '/product-categories';
+  static const String ADD_PRODUCT_CATEGORIES_URI = '/product-categories';
+  static const String GET_UNITS_LIST_URI = '/units';
+  static const String ADD_UNITS_URI = '/units';
+
   // Profile
   static const String GET_PROFILE_URI = '/my-profile';
   static const String UPDATE_PROFILE_URI = '/my-profile';
