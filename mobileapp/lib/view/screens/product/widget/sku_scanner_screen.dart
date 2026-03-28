@@ -19,9 +19,7 @@ class _SkuScannerScreenState extends State<SkuScannerScreen> {
     if (kIsWeb) return true;
 
     return switch (defaultTargetPlatform) {
-      TargetPlatform.android ||
-      TargetPlatform.iOS ||
-      TargetPlatform.macOS => true,
+      TargetPlatform.android || TargetPlatform.iOS => true,
       _ => false,
     };
   }
