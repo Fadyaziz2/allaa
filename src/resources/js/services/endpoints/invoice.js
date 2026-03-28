@@ -63,3 +63,8 @@ export const RECENT_INVOICE = "api/app/dashboard/recent-invoice"
 export const RECENT_ESTIMATE = "api/app/dashboard/recent-estimate"
 export const RECENT_TRANSACTION = "api/app/dashboard/recent-transaction"
 export const RECENT_EXPENSES = "api/app/dashboard/recent-expense"
+
+export const SUPPLIERS = "api/invoice/setup/suppliers"
+export const PURCHASE_INVOICES = "api/invoice/setup/purchase-invoices"
+export const PURCHASE_INVOICE_PAYMENT = "api/invoice/setup/purchase-invoices"
+export const SELECTED_SUPPLIERS = "api/invoice/selected/suppliers"

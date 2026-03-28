@@ -23,6 +23,8 @@ use App\Http\Controllers\Mobile\Api\Notification\NotificationController;
 use App\Http\Controllers\Mobile\Api\PaymentMethod\PaymentMethodController;
 use App\Http\Controllers\Mobile\Api\Product\ProductController;
 use App\Http\Controllers\Mobile\Api\ProductCategory\ProductCategoryController;
+use App\Http\Controllers\Mobile\Api\Purchase\PurchaseInvoiceController as MobilePurchaseInvoiceController;
+use App\Http\Controllers\Mobile\Api\Supplier\SupplierController as MobileSupplierController;
 use App\Http\Controllers\Mobile\Api\Customer\CustomerController;
 use App\Http\Controllers\Mobile\Api\Profile\ProfileController;
 use App\Http\Controllers\Mobile\Api\Selected\SelectedController;
@@ -50,6 +52,7 @@ Route::prefix('mobile/selected')->middleware(['auth', 'authorize'])->group(callb
     $router->get('payment-methods', [SelectedController::class, 'paymentMethods']);
     $router->get('customers', [SelectedController::class, 'customers']);
     $router->get('products', [SelectedController::class, 'products']);
+    $router->get('suppliers', [SelectedController::class, 'suppliers']);
     $router->get('taxes', [SelectedController::class, 'taxes']);
     $router->get('notes', [SelectedController::class, 'notes']);
     $router->get('discount-types', [SelectedController::class, 'discountTypes']);
@@ -113,6 +116,10 @@ Route::prefix('mobile')->middleware('admin')->group(callback: function (Router $
 
 
     $router->apiResource('products', ProductController::class);
+
+    $router->apiResource('suppliers', MobileSupplierController::class);
+    $router->apiResource('purchase-invoices', MobilePurchaseInvoiceController::class);
+    $router->post('purchase-invoices/{purchase_invoice}/payment', [MobilePurchaseInvoiceController::class, 'addPayment']);
 
     $router->apiResource('categories', CategoryController::class);
     $router->apiResource('product-categories', ProductCategoryController::class);

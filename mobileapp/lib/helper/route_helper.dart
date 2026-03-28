@@ -12,6 +12,10 @@ import 'package:invoicex/view/screens/invoice/create_invoice_screen.dart';
 import 'package:invoicex/view/screens/invoice/invoice_filter_screen.dart';
 import 'package:invoicex/view/screens/notification/notification_screen.dart';
 import 'package:invoicex/view/screens/splash/splash_screen.dart';
+import 'package:invoicex/view/screens/supplier/suppliers_screen.dart';
+import 'package:invoicex/view/screens/supplier/add_supplier_screen.dart';
+import 'package:invoicex/view/screens/purchase/purchase_invoices_screen.dart';
+import 'package:invoicex/view/screens/purchase/add_purchase_invoice_screen.dart';
 import 'package:get/get.dart';
 import '../view/screens/administrator/roles/role_filter_screen.dart';
 import '../view/screens/administrator/roles/roles_screen.dart';
@@ -92,6 +96,10 @@ class RouteHelper {
   static const String incomeReportScreen = '/income-report';
   static const String productCategoriesScreen = '/product-categories';
   static const String unitsScreen = '/units';
+  static const String supplierScreen = '/suppliers';
+  static const String addSupplierScreen = '/add-supplier';
+  static const String purchaseInvoicesScreen = '/purchase-invoices';
+  static const String addPurchaseInvoiceScreen = '/add-purchase-invoice';
 
   // Get page name from route
   static String getInitialRoute() => '$initial';
@@ -146,6 +154,10 @@ class RouteHelper {
   static String getIncomeReportRoute() => incomeReportScreen;
   static String getProductCategoriesRoute() => productCategoriesScreen;
   static String getUnitsRoute() => unitsScreen;
+  static String getSuppliersRoute() => supplierScreen;
+  static String getAddSupplierRoute(String update) => "$addSupplierScreen?update=$update";
+  static String getPurchaseInvoicesRoute() => purchaseInvoicesScreen;
+  static String getAddPurchaseInvoiceRoute(String update) => "$addPurchaseInvoiceScreen?update=$update";
 
 // call this method from main screen to push all routes
   static List<GetPage> routes = [
@@ -233,6 +245,10 @@ class RouteHelper {
         page: () => const IncomeReportFilterScreen()),
     GetPage(name: incomeReportScreen, page: () => const IncomeReportScreen()),
     GetPage(name: productCategoriesScreen, page: () => const ProductCategoriesScreen()),
-    GetPage(name: unitsScreen, page: () => const UnitsScreen())
+    GetPage(name: unitsScreen, page: () => const UnitsScreen()),
+    GetPage(name: supplierScreen, page: () => const SuppliersScreen()),
+    GetPage(name: addSupplierScreen, page: () => AddSupplierScreen(isUpdate: Get.parameters['update']!)),
+    GetPage(name: purchaseInvoicesScreen, page: () => const PurchaseInvoicesScreen()),
+    GetPage(name: addPurchaseInvoiceScreen, page: () => AddPurchaseInvoiceScreen(isUpdate: Get.parameters['update']!))
   ];
 }

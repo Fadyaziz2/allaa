@@ -21,6 +21,7 @@ use App\Models\Invoice\Category\Category;
 use App\Models\Invoice\Note\Note;
 use App\Models\Invoice\PaymentMethod\PaymentMethod;
 use App\Models\Invoice\Product\Product;
+use App\Models\Invoice\Supplier\Supplier;
 use App\Models\Invoice\Tax\Tax;
 use App\Models\Invoice\Unit\Unit;
 use App\Models\User;
@@ -173,6 +174,15 @@ class SelectedController extends Controller
             ->get();
 
         return success_response('Data fetched successfully', CustomerPaymentMethodResource::collection($paymentMethods));
+    }
+
+    public function suppliers(): \Illuminate\Database\Eloquent\Collection|\Illuminate\Http\JsonResponse
+    {
+        if ($response = check_permission(['create_expenses', 'update_expenses', 'manage_global_access'])) {
+            return $response;
+        }
+
+        return Supplier::query()->select('id', 'name')->orderBy('name')->get();
     }
 
     public function roles()

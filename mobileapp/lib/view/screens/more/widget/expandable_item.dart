@@ -248,6 +248,22 @@ createDrawerExpandableList() {
             ),
         ],
       ),
+
+    if ((permissionData.isAppAdmin!) || (permissionData.manageGlobalAccess!))
+      DrawerExpandableModel(
+        title: 'purchases_key',
+        svgImagePath: Images.expensesIcon,
+        expandableItem: [
+          DrawerExpandableItemModel(
+            title: 'suppliers_key',
+            routePath: RouteHelper.supplierScreen,
+          ),
+          DrawerExpandableItemModel(
+            title: 'purchase_invoices_key',
+            routePath: RouteHelper.purchaseInvoicesScreen,
+          ),
+        ],
+      ),
     if ((permissionData.isAppAdmin!) ||
         (permissionData.incomeReportView! || permissionData.expenseReportView!))
       DrawerExpandableModel(

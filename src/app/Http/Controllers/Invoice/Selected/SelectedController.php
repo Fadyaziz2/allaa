@@ -11,6 +11,7 @@ use App\Models\Invoice\Country\Country;
 use App\Models\Invoice\Note\Note;
 use App\Models\Invoice\PaymentMethod\PaymentMethod;
 use App\Models\Invoice\Product\Product;
+use App\Models\Invoice\Supplier\Supplier;
 use App\Models\Invoice\Recurring\RecurringType;
 use App\Models\Invoice\Tax\Tax;
 use App\Models\User;
@@ -104,6 +105,17 @@ class SelectedController extends Controller
             ->filter(new NameFilter())
             ->when(auth()->user()->can('manage_global_access'), fn($query) => $query->whereNotIn('type', ['paypal', 'stripe']))
             ->get();
+    }
+
+
+
+    public function suppliers(): \Illuminate\Database\Eloquent\Collection|\Illuminate\Http\JsonResponse
+    {
+        if ($response = check_permission(['create_expenses', 'update_expenses', 'manage_global_access'])) {
+            return $response;
+        }
+
+        return Supplier::query()->select('id', 'name')->orderBy('name')->get();
     }
 
     public function customerPaymentMethod(): \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
