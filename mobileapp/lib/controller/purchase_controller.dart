@@ -69,17 +69,19 @@ class PurchaseController extends GetxController implements GetxService {
     noteController.text = '';
     selectedSupplierId = model?.supplierId;
     clearInvoiceItems();
-    addInvoiceItem();
+    addInvoiceItem(shouldUpdate: false);
   }
 
-  void addInvoiceItem() {
+  void addInvoiceItem({bool shouldUpdate = true}) {
     invoiceItems.add({
       'product_id': TextEditingController(),
       'product_name': TextEditingController(),
       'quantity': TextEditingController(text: '1'),
       'unit_price': TextEditingController(text: '0'),
     });
-    update();
+    if (shouldUpdate) {
+      update();
+    }
   }
 
   void removeInvoiceItem(int index) {
@@ -110,10 +112,21 @@ class PurchaseController extends GetxController implements GetxService {
 
   Future<void> getSupplierOptions() async {
     final response = await purchaseRepo.getSelectedSuppliers();
-    if (response.statusCode == 200 && response.body['status'] == true) {
+    if (response.statusCode == 200) {
       _supplierOptions = [];
-      for (final item in response.body['result']) {
-        _supplierOptions.add(SupplierModel.fromJson(item));
+      final dynamic body = response.body;
+      final List<dynamic> list = body is List
+          ? body
+          : (body is Map<String, dynamic> && body['result'] is List)
+              ? (body['result'] as List<dynamic>)
+              : (body is Map<String, dynamic> && body['result'] is Map<String, dynamic> && body['result']['data'] is List)
+                  ? (body['result']['data'] as List<dynamic>)
+                  : <dynamic>[];
+
+      for (final item in list) {
+        if (item is Map<String, dynamic>) {
+          _supplierOptions.add(SupplierModel.fromJson(item));
+        }
       }
     }
     update();
@@ -121,9 +134,19 @@ class PurchaseController extends GetxController implements GetxService {
 
   Future<void> getProductOptions() async {
     final response = await purchaseRepo.getSelectedProducts();
-    if (response.statusCode == 200 && response.body['status'] == true) {
+    if (response.statusCode == 200) {
       _productOptions = [];
-      for (final item in response.body['result']) {
+      final dynamic body = response.body;
+      final List<dynamic> list = body is List
+          ? body
+          : (body is Map<String, dynamic> && body['result'] is List)
+              ? (body['result'] as List<dynamic>)
+              : (body is Map<String, dynamic> && body['result'] is Map<String, dynamic> && body['result']['data'] is List)
+                  ? (body['result']['data'] as List<dynamic>)
+                  : <dynamic>[];
+
+      for (final item in list) {
+        if (item is! Map<String, dynamic>) continue;
         _productOptions.add({
           'id': item['id'],
           'name': item['name']?.toString() ?? '',
@@ -181,9 +204,17 @@ class PurchaseController extends GetxController implements GetxService {
     final response = await purchaseRepo.getPurchaseInvoices(
       supplierId: selectedSupplierFilterId,
     );
-    if (response.statusCode == 200 && response.body['status'] == true) {
+    if (response.statusCode == 200) {
       _purchaseInvoices = [];
-      for (final item in response.body['result']['data']) {
+      final dynamic body = response.body;
+      final List<dynamic> list = body is Map<String, dynamic> && body['result'] is Map<String, dynamic> && body['result']['data'] is List
+          ? (body['result']['data'] as List<dynamic>)
+          : (body is Map<String, dynamic> && body['data'] is List)
+              ? (body['data'] as List<dynamic>)
+              : <dynamic>[];
+
+      for (final item in list) {
+        if (item is! Map<String, dynamic>) continue;
         _purchaseInvoices.add(PurchaseInvoiceModel.fromJson(item));
       }
     } else {
