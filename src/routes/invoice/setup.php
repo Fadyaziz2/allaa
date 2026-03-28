@@ -10,6 +10,8 @@ use App\Http\Controllers\Invoice\Expense\ExpenseController;
 use App\Http\Controllers\Invoice\Note\NoteController;
 use App\Http\Controllers\Invoice\PaymentMethod\PaymentMethodController;
 use App\Http\Controllers\Invoice\Product\ProductController;
+use App\Http\Controllers\Invoice\Purchase\PurchaseInvoiceController;
+use App\Http\Controllers\Invoice\Supplier\SupplierController;
 use App\Http\Controllers\Invoice\Tax\TaxController;
 use App\Http\Controllers\Invoice\Unit\UnitController;
 use App\Http\Controllers\Invoice\Wastage\WastageController;
@@ -23,6 +25,10 @@ Route::group(['prefix' => 'invoice/setup', 'middleware' => 'admin'], function (R
     $router->apiResource('expenses', ExpenseController::class);
     $router->apiResource('products', ProductController::class);
     $router->apiResource('wastages', WastageController::class)->only(['index', 'store']);
+    $router->apiResource('suppliers', SupplierController::class);
+    $router->apiResource('purchase-invoices', PurchaseInvoiceController::class);
+    $router->post('purchase-invoices/{purchase_invoice}/payment', [PurchaseInvoiceController::class, 'addPayment'])
+        ->name('purchase-invoices.payment');
     $router->apiResource('taxes', TaxController::class);
     $router->apiResource('payment-methods', PaymentMethodController::class);
     $router->apiResource('notes', NoteController::class);

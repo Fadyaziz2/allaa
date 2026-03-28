@@ -257,6 +257,18 @@ createDrawerExpandableList() {
           DrawerExpandableItemModel(
             title: 'all_wastages_key',
             routePath: RouteHelper.getWastageRoute(),
+    if ((permissionData.isAppAdmin!) || (permissionData.manageGlobalAccess!))
+      DrawerExpandableModel(
+        title: 'purchases_key',
+        svgImagePath: Images.expensesIcon,
+        expandableItem: [
+          DrawerExpandableItemModel(
+            title: 'suppliers_key',
+            routePath: RouteHelper.supplierScreen,
+          ),
+          DrawerExpandableItemModel(
+            title: 'purchase_invoices_key',
+            routePath: RouteHelper.purchaseInvoicesScreen,
           ),
         ],
       ),

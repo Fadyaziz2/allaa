@@ -370,3 +370,18 @@
   "all_key": "All",
   "quantity_key": "Quantity"
 }
+  "purchases_key": "Purchases",
+  "suppliers_key": "Suppliers",
+  "supplier_key": "Supplier",
+  "add_supplier_key": "Add Supplier",
+  "update_supplier_key": "Update Supplier",
+  "purchase_invoices_key": "Purchase Invoices",
+  "add_purchase_invoice_key": "Add Purchase Invoice",
+  "update_purchase_invoice_key": "Update Purchase Invoice",
+  "contact_person_key": "Contact Person",
+  "filter_by_supplier_key": "Filter by supplier",
+  "pay_due_key": "Pay Due",
+  "please_select_supplier_key": "Please select supplier",
+  "please_add_item_key": "Please add at least one item",
+  "invalid_items_key": "Invalid invoice items"
+}

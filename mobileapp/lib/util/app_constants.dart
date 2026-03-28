@@ -159,6 +159,16 @@ class AppConstants {
 
   // Report
   static const String GET_INCOME_REPORT_URI = '/income-report';
+  static const String GET_SUPPLIERS_URI = '/suppliers';
+  static const String ADD_SUPPLIERS_URI = '/suppliers';
+  static const String UPDATE_SUPPLIERS_URI = '/suppliers/';
+  static const String DELETE_SUPPLIERS_URI = '/suppliers/';
+  static const String GET_PURCHASE_INVOICES_URI = '/purchase-invoices';
+  static const String ADD_PURCHASE_INVOICES_URI = '/purchase-invoices';
+  static const String UPDATE_PURCHASE_INVOICES_URI = '/purchase-invoices/';
+  static const String DELETE_PURCHASE_INVOICES_URI = '/purchase-invoices/';
+  static const String PURCHASE_INVOICE_PAYMENT_URI = '/purchase-invoices/';
+
   static const String GET_EXPENSES_REPORT_URI = '/expense-report';
 
   //administrator
