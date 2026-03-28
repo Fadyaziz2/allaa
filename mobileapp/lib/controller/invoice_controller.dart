@@ -2156,10 +2156,16 @@ class InvoiceController extends GetxController implements GetxService {
     update();
     final response = await invoiceRepo.getCustomerListDropdown();
     if (response.statusCode == 200 && response.body['status'] == true) {
+      final Set<int> addedCustomerIds = {};
       response.body['result']["data"].forEach((item) {
+        final int? customerId = item['id'];
+        if (customerId == null || addedCustomerIds.contains(customerId)) {
+          return;
+        }
+        addedCustomerIds.add(customerId);
         _customerDropdownList.add(CustomerListModel.fromJson(item));
         _customerDropdownStringList.add({
-          'id': item['id'].toString(),
+          'id': customerId.toString(),
           'value': item['full_name'],
         });
       });
@@ -2233,10 +2239,16 @@ class InvoiceController extends GetxController implements GetxService {
     update();
     final response = await invoiceRepo.getProductListDropdown();
     if (response.statusCode == 200 && response.body['status'] == true) {
+      final Set<int> addedProductIds = {};
       response.body['result']["data"].forEach((item) {
+        final int? productId = item['id'];
+        if (productId == null || addedProductIds.contains(productId)) {
+          return;
+        }
+        addedProductIds.add(productId);
         _productDropdownList.add(ProductListModel.fromJson(item));
         _productDropdownStringList.add({
-          'id': item['id'].toString(),
+          'id': productId.toString(),
           'value': item['name'],
         });
       });
