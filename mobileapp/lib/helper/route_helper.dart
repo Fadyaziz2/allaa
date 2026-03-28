@@ -249,10 +249,10 @@ class RouteHelper {
     GetPage(name: incomeReportScreen, page: () => const IncomeReportScreen()),
     GetPage(name: productCategoriesScreen, page: () => const ProductCategoriesScreen()),
     GetPage(name: unitsScreen, page: () => const UnitsScreen()),
-    GetPage(name: wastageScreen, page: () => const WastageScreen())
+    GetPage(name: wastageScreen, page: () => const WastageScreen()),
     GetPage(name: supplierScreen, page: () => const SuppliersScreen()),
     GetPage(name: addSupplierScreen, page: () => AddSupplierScreen(isUpdate: Get.parameters['update']!)),
     GetPage(name: purchaseInvoicesScreen, page: () => const PurchaseInvoicesScreen()),
-    GetPage(name: addPurchaseInvoiceScreen, page: () => AddPurchaseInvoiceScreen(isUpdate: Get.parameters['update']!))
+    GetPage(name: addPurchaseInvoiceScreen, page: () => AddPurchaseInvoiceScreen(isUpdate: Get.parameters['update']!)),
   ];
 }
