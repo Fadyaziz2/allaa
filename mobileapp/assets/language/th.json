@@ -348,5 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "คุณแน่ใจหรือไม่ว่าต้องการดาวน์โหลดใบแจ้งหนี้แบบเทอร์มอลนี้?",
   "you_want_to_download_this_thermal_quotation": "คุณแน่ใจหรือไม่ว่าต้องการดาวน์โหลดใบเสนอราคาแบบเทอร์มอลนี้?",
   "thermal_quotation_key": "ใบเสนอราคาเทอร์มอล",
-  "thermal_invoice_key": "ใบแจ้งหนี้เทอร์มอล"
+  "thermal_invoice_key": "ใบแจ้งหนี้เทอร์มอล",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

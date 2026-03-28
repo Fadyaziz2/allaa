@@ -328,7 +328,6 @@
   "Invited": "Invitert",
   "estimate": "Anbud",
   "invoice": "Faktura",
-
   "administrator_key": "Administrator",
   "users_key": "Brukere",
   "roles_key": "Roller",
@@ -349,5 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "Er du sikker på at du vil laste ned denne termiske fakturaen?",
   "you_want_to_download_this_thermal_quotation": "Er du sikker på at du vil laste ned dette termiske tilbudet?",
   "thermal_quotation_key": "Termisk tilbud",
-  "thermal_invoice_key": "Termisk faktura"
+  "thermal_invoice_key": "Termisk faktura",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

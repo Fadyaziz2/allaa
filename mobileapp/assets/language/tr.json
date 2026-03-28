@@ -348,5 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "Bu termal faturayı indirmek istediğinizden emin misiniz?",
   "you_want_to_download_this_thermal_quotation": "Bu termal teklifi indirmek istediğinizden emin misiniz?",
   "thermal_quotation_key": "Termal Teklif",
-  "thermal_invoice_key": "Termal Fatura"
+  "thermal_invoice_key": "Termal Fatura",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

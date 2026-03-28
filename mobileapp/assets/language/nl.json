@@ -348,5 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "Weet je zeker dat je deze thermische factuur wilt downloaden?",
   "you_want_to_download_this_thermal_quotation": "Weet je zeker dat je deze thermische offerte wilt downloaden?",
   "thermal_quotation_key": "Thermische offerte",
-  "thermal_invoice_key": "Thermische factuur"
+  "thermal_invoice_key": "Thermische factuur",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

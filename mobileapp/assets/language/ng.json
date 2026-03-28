@@ -332,5 +332,11 @@
   "you_want_to_download_this_thermal_invoice": "Ị bụ́ onye nwere obi ike ịchọrọ ibudata akwụkwọ ụgwọ a nke thermal?",
   "you_want_to_download_this_thermal_quotation": "Ị bụ́ onye nwere obi ike ịchọrọ ibudata ọnụahịa a nke thermal?",
   "thermal_quotation_key": "Ọnụahịa Thermal",
-  "thermal_invoice_key": "Akwụkwọ ụgwọ Thermal"
+  "thermal_invoice_key": "Akwụkwọ ụgwọ Thermal",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

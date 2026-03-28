@@ -34,6 +34,8 @@ import '../view/screens/language/language_screen.dart';
 import '../view/screens/payment/payment_method_screen.dart';
 import '../view/screens/product/add_product_screen.dart';
 import '../view/screens/product/product_filter_screen.dart';
+import '../view/screens/product/product_categories_screen.dart';
+import '../view/screens/product/units_screen.dart';
 import '../view/screens/product/product_screen.dart';
 import '../view/screens/profile/profile_screen.dart';
 import '../view/screens/report/expense_report_filter_screen.dart';
@@ -88,6 +90,8 @@ class RouteHelper {
   static const String expensesReportFilterScreen = '/expenses-report-filter';
   static const String incomeReportFilterScreen = '/income-report-filter';
   static const String incomeReportScreen = '/income-report';
+  static const String productCategoriesScreen = '/product-categories';
+  static const String unitsScreen = '/units';
 
   // Get page name from route
   static String getInitialRoute() => '$initial';
@@ -140,6 +144,8 @@ class RouteHelper {
   static String getExpensesReportFilterRoute() => expensesReportFilterScreen;
   static String getIncomeReportFilterRoute() => incomeReportFilterScreen;
   static String getIncomeReportRoute() => incomeReportScreen;
+  static String getProductCategoriesRoute() => productCategoriesScreen;
+  static String getUnitsRoute() => unitsScreen;
 
 // call this method from main screen to push all routes
   static List<GetPage> routes = [
@@ -225,6 +231,8 @@ class RouteHelper {
     GetPage(
         name: incomeReportFilterScreen,
         page: () => const IncomeReportFilterScreen()),
-    GetPage(name: incomeReportScreen, page: () => const IncomeReportScreen())
+    GetPage(name: incomeReportScreen, page: () => const IncomeReportScreen()),
+    GetPage(name: productCategoriesScreen, page: () => const ProductCategoriesScreen()),
+    GetPage(name: unitsScreen, page: () => const UnitsScreen())
   ];
 }

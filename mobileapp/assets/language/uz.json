@@ -348,5 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "Ushbu termal hisob-fakturani yuklab olishni xohlaysizmi?",
   "you_want_to_download_this_thermal_quotation": "Ushbu termal tijorat taklifini yuklab olishni xohlaysizmi?",
   "thermal_quotation_key": "Termal tijorat taklifi",
-  "thermal_invoice_key": "Termal hisob-faktura"
+  "thermal_invoice_key": "Termal hisob-faktura",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

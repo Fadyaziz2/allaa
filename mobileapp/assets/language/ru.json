@@ -348,5 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "Вы уверены, что хотите скачать этот термальный счёт?",
   "you_want_to_download_this_thermal_quotation": "Вы уверены, что хотите скачать этот термальный коммерческое предложение?",
   "thermal_quotation_key": "Термальное коммерческое предложение",
-  "thermal_invoice_key": "Термальный счёт"
+  "thermal_invoice_key": "Термальный счёт",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

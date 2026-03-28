@@ -348,6 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "আপনি কি নিশ্চিত যে আপনি এই থার্মাল চালান ডাউনলোড করতে চান?",
   "you_want_to_download_this_thermal_quotation": "আপনি কি নিশ্চিত যে আপনি এই থার্মাল কোটেশন ডাউনলোড করতে চান?",
   "thermal_quotation_key": "থার্মাল কোটেশন",
-  "thermal_invoice_key": "থার্মাল চালান"
+  "thermal_invoice_key": "থার্মাল চালান",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }
-

@@ -112,6 +112,29 @@ class MoreScreenDrawer extends StatelessWidget {
                       },
                     ),
 
+
+                  if (permissionData.isAppAdmin! || permissionData.viewUnits!)
+                    MyItem(
+                      title: 'units_key'.tr,
+                      imageColor: Theme.of(context).primaryColor,
+                      imagePath: Images.productIcon,
+                      onTap: () {
+                        Get.back();
+                        Get.toNamed(RouteHelper.getUnitsRoute());
+                      },
+                    ),
+
+                  if (permissionData.isAppAdmin! || permissionData.viewCategories!)
+                    MyItem(
+                      title: 'product_categories_key'.tr,
+                      imageColor: Theme.of(context).primaryColor,
+                      imagePath: Images.addCategory,
+                      onTap: () {
+                        Get.back();
+                        Get.toNamed(RouteHelper.getProductCategoriesRoute());
+                      },
+                    ),
+
                   // Estimate Item
                   if (permissionData.isAppAdmin! || permissionData.viewEstimates!)
                     MyItem(

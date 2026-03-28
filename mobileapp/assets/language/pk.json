@@ -25,7 +25,7 @@
   "customer_list_key": "صارف کی فہرست",
   "more_key": "مزید",
   "customer_due_invoice_payment": "ادائیگی",
-   "total_amount_key": "کل رقم",
+  "total_amount_key": "کل رقم",
   "total_paid_key": "کل ادا کیا",
   "total_due_key": "کل بقایا",
   "total_customer_key": "کل صارف",
@@ -338,5 +338,11 @@
   "you_want_to_download_this_thermal_invoice": "کیا آپ واقعی یہ تھرمل انوائس ڈاؤن لوڈ کرنا چاہتے ہیں؟",
   "you_want_to_download_this_thermal_quotation": "کیا آپ واقعی یہ تھرمل کوٹیشن ڈاؤن لوڈ کرنا چاہتے ہیں؟",
   "thermal_quotation_key": "تھرمل کوٹیشن",
-  "thermal_invoice_key": "تھرمل انوائس"
+  "thermal_invoice_key": "تھرمل انوائس",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

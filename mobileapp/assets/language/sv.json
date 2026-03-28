@@ -348,5 +348,11 @@
   "you_want_to_download_this_thermal_invoice": "Är du säker på att du vill ladda ner denna termiska faktura?",
   "you_want_to_download_this_thermal_quotation": "Är du säker på att du vill ladda ner denna termiska offert?",
   "thermal_quotation_key": "Termisk offert",
-  "thermal_invoice_key": "Termisk faktura"
+  "thermal_invoice_key": "Termisk faktura",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }

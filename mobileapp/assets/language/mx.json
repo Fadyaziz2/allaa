@@ -338,5 +338,11 @@
   "you_want_to_download_this_thermal_invoice": "¿Estás seguro de que deseas descargar esta factura térmica?",
   "you_want_to_download_this_thermal_quotation": "¿Estás seguro de que deseas descargar esta cotización térmica?",
   "thermal_quotation_key": "Cotización térmica",
-  "thermal_invoice_key": "Factura térmica"
+  "thermal_invoice_key": "Factura térmica",
+  "units_key": "Units",
+  "product_categories_key": "Product Categories",
+  "add_unit_key": "Add Unit",
+  "write_unit_name_here_key": "Write unit name here.",
+  "please_enter_the_unit_name_key": "Please enter the unit name",
+  "add_product_category_key": "Add product category"
 }
