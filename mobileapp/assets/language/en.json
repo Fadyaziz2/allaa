@@ -363,6 +363,13 @@
   "alert_quantity_key": "Alert quantity",
   "last_purchase_price_key": "Last purchase price",
   "low_stock_products_key": "Low stock products",
+  "wastages_key": "Wastage",
+  "all_wastages_key": "All wastages",
+  "add_wastage_key": "Add wastage",
+  "please_fill_all_fields_key": "Please fill all required fields",
+  "all_key": "All",
+  "quantity_key": "Quantity"
+}
   "purchases_key": "Purchases",
   "suppliers_key": "Suppliers",
   "supplier_key": "Supplier",

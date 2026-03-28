@@ -32,6 +32,7 @@ use App\Http\Controllers\Mobile\Api\Setting\ApiSettingController;
 use App\Http\Controllers\Mobile\Api\Tax\TaxController;
 use App\Http\Controllers\Mobile\Api\Transaction\TransactionController;
 use App\Http\Controllers\Mobile\Api\Unit\UnitController;
+use App\Http\Controllers\Mobile\Api\Wastage\WastageController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
@@ -116,6 +117,7 @@ Route::prefix('mobile')->middleware('admin')->group(callback: function (Router $
 
 
     $router->apiResource('products', ProductController::class);
+    $router->apiResource('wastages', WastageController::class)->only(['index', 'store']);
 
     $router->apiResource('suppliers', MobileSupplierController::class);
     $router->apiResource('purchase-invoices', MobilePurchaseInvoiceController::class);

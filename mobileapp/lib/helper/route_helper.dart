@@ -41,6 +41,7 @@ import '../view/screens/product/product_filter_screen.dart';
 import '../view/screens/product/product_categories_screen.dart';
 import '../view/screens/product/units_screen.dart';
 import '../view/screens/product/product_screen.dart';
+import '../view/screens/wastage/wastage_screen.dart';
 import '../view/screens/profile/profile_screen.dart';
 import '../view/screens/report/expense_report_filter_screen.dart';
 import '../view/screens/report/income_report_filter_screen.dart';
@@ -96,6 +97,7 @@ class RouteHelper {
   static const String incomeReportScreen = '/income-report';
   static const String productCategoriesScreen = '/product-categories';
   static const String unitsScreen = '/units';
+  static const String wastageScreen = '/wastages';
   static const String supplierScreen = '/suppliers';
   static const String addSupplierScreen = '/add-supplier';
   static const String purchaseInvoicesScreen = '/purchase-invoices';
@@ -154,6 +156,7 @@ class RouteHelper {
   static String getIncomeReportRoute() => incomeReportScreen;
   static String getProductCategoriesRoute() => productCategoriesScreen;
   static String getUnitsRoute() => unitsScreen;
+  static String getWastageRoute() => wastageScreen;
   static String getSuppliersRoute() => supplierScreen;
   static String getAddSupplierRoute(String update) => "$addSupplierScreen?update=$update";
   static String getPurchaseInvoicesRoute() => purchaseInvoicesScreen;
@@ -246,6 +249,7 @@ class RouteHelper {
     GetPage(name: incomeReportScreen, page: () => const IncomeReportScreen()),
     GetPage(name: productCategoriesScreen, page: () => const ProductCategoriesScreen()),
     GetPage(name: unitsScreen, page: () => const UnitsScreen()),
+    GetPage(name: wastageScreen, page: () => const WastageScreen())
     GetPage(name: supplierScreen, page: () => const SuppliersScreen()),
     GetPage(name: addSupplierScreen, page: () => AddSupplierScreen(isUpdate: Get.parameters['update']!)),
     GetPage(name: purchaseInvoicesScreen, page: () => const PurchaseInvoicesScreen()),

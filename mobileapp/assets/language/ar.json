@@ -363,6 +363,13 @@
   "alert_quantity_key": "كمية التنبيه",
   "last_purchase_price_key": "آخر سعر شراء",
   "low_stock_products_key": "المنتجات منخفضة المخزون",
+  "wastages_key": "الهالك",
+  "all_wastages_key": "قائمة الهالك",
+  "add_wastage_key": "إضافة هالك",
+  "please_fill_all_fields_key": "يرجى تعبئة كل الحقول المطلوبة",
+  "all_key": "الكل",
+  "quantity_key": "الكمية"
+}
   "purchases_key": "المشتريات",
   "suppliers_key": "الموردين",
   "supplier_key": "المورد",
