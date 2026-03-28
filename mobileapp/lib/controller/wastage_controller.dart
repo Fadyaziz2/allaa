@@ -48,7 +48,12 @@ class WastageController extends GetxController implements GetxService {
     final response = await wastageRepo.getSelectableProducts();
     if (response.statusCode == 200) {
       _products = [];
-      for (final item in response.body['data']) {
+      final rawProducts = response.body?['result']?['data'] ?? response.body?['data'] ?? [];
+      if (rawProducts is! Iterable) {
+        update();
+        return;
+      }
+      for (final item in rawProducts) {
         _products.add({'id': item['id'].toString(), 'name': item['name'].toString()});
       }
       update();
@@ -61,7 +66,13 @@ class WastageController extends GetxController implements GetxService {
     final response = await wastageRepo.getCategories();
     if (response.statusCode == 200) {
       _categories = [];
-      for (final item in response.body['data']) {
+      final rawCategories =
+          response.body?['result']?['data'] ?? response.body?['result'] ?? response.body?['data'] ?? [];
+      if (rawCategories is! Iterable) {
+        update();
+        return;
+      }
+      for (final item in rawCategories) {
         _categories.add({'id': item['id'].toString(), 'name': item['name'].toString()});
       }
       update();
