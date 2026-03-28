@@ -27,6 +27,9 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   void initState() {
     _scrollController.addListener(_scrollListener);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Get.find<ProductController>().getProducts();
+    });
     super.initState();
   }
 
@@ -45,9 +48,6 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     // Get permission data
     final permissionData = Get.find<PermissionController>().permissionModel;
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Get.find<ProductController>().getProducts();
-    });
     return GetBuilder<ProductController>(
       builder: (productController) {
         return Scaffold(

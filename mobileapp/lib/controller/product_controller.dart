@@ -271,6 +271,9 @@ class ProductController extends GetxController implements GetxService {
   // Add Product
   Future<ResponseModel> addProduct(
       {required AddProductBody addProductBody}) async {
+    if (_addProductLoading) {
+      return ResponseModel(false, 'loading');
+    }
     _addProductLoading = true;
     update();
     Response response =
@@ -331,6 +334,9 @@ class ProductController extends GetxController implements GetxService {
   // Update Product
   Future<ResponseModel> updateProduct(
       {required AddProductBody addProductBody}) async {
+    if (_isProductUpdateLoading) {
+      return ResponseModel(false, 'loading');
+    }
     _isProductUpdateLoading = true;
     update();
     Response response = await productRepo.updateProduct(
